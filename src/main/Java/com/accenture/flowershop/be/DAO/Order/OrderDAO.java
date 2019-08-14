@@ -1,21 +1,19 @@
 package com.accenture.flowershop.be.DAO.Order;
 
-import com.accenture.flowershop.be.Entity.Order.OrderEntity;
+import com.accenture.flowershop.be.Entity.Order.Order;
 
 import java.util.List;
 
 public interface OrderDAO {
 
-    void saveOrder(OrderEntity order);
+    void saveOrder(Order order);
 
-    void delete(OrderEntity order);
+    void delete(Order order);
 
-    void updateOrder(OrderEntity order);
+    void updateOrder(Order order);
 
-    OrderEntity findOrder(long orderId);
+    Order findOrder(long orderId);
 
-    List<OrderEntity> findAllOrders();
-
-    OrderEntity getInfoAboutOrder(OrderEntity order);
+    List<Order> findAllOrders();
 
 }

@@ -1,20 +1,20 @@
 package com.accenture.flowershop.be.DAO.Flower;
 
-import com.accenture.flowershop.be.Entity.Flower.FlowerEntity;
+import com.accenture.flowershop.be.Entity.Flower.Flower;
 
 import java.util.List;
 
 public interface FlowerDAO {
 
-    FlowerEntity findFlowerByName(String flower_name);
+    Flower findFlowerByName(String flower_name);
 
-    List<FlowerEntity> getFlowerList();
+    List<Flower> getFlowerList();
 
 
-    void addFlower(FlowerEntity flower);
+    void addFlower(Flower flower);
 
-    void deleteFlower(FlowerEntity flower);
+    void deleteFlower(Flower flower);
 
-    void updateFlower(FlowerEntity flower);
+    void updateFlower(Flower flower);
 
 }

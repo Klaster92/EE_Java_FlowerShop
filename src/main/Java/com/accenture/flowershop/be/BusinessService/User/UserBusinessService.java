@@ -1,16 +1,17 @@
 package com.accenture.flowershop.be.BusinessService.User;
 
-import com.accenture.flowershop.be.Entity.User.UserEntity;
+
+import com.accenture.flowershop.be.Entity.User.User;
 
 public interface UserBusinessService {
 
     boolean userVerification(String login, String password);
 
-    boolean userRegistration(UserEntity user);
+    boolean userRegistration(User user);
 
-    void deleteUser(UserEntity user);
+    void deleteUser(User user);
 
-    void updateUser(UserEntity user);
+    void updateUser(User user);
 
-    UserEntity findUserByLogin(String login);
+    User findUserByLogin(String login);
 }

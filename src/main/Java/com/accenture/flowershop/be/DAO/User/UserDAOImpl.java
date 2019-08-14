@@ -1,6 +1,6 @@
 package com.accenture.flowershop.be.DAO.User;
 
-import com.accenture.flowershop.be.Entity.User.UserEntity;
+import com.accenture.flowershop.be.Entity.User.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -11,21 +11,20 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Transactional
 @Repository
 public class UserDAOImpl implements UserDAO {
-
 
     @PersistenceContext
     private EntityManager em;
 
     private static final Logger log = LoggerFactory.getLogger(UserDAOImpl.class);
 
-    @Transactional
     @Override
-    public UserEntity findUserByLogin(String login) {
+    public User findUserByLogin(String login) {
         try {
-            TypedQuery<UserEntity> query =
-                    em.createQuery("select e from UserEntity e where e.login =:LOGIN" , UserEntity.class);
+            TypedQuery<User> query =
+                    em.createQuery("select e from User e where e.login =:LOGIN" , User.class);
             query.setParameter("LOGIN", login);
             return query.getSingleResult();
         } catch (NoResultException e) {
@@ -34,34 +33,33 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    @Transactional
     @Override
-    public List<UserEntity> getUserList() {
-        /*try {
-            return em.createQuery("select e from User e", User.class).getResultList();
+    public List<User> getUserList() {
+        try {
+            TypedQuery<User> query;
+            query = em.createQuery("SELECT e from User e", User.class);
+            return query.getResultList();
         } catch (NoResultException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
-    */
-        return em.createQuery("SELECT e from UserEntity e", UserEntity.class).getResultList();
+
     }
 
-    @Transactional
     @Override
-    public void addUser(UserEntity user) {
+    public void addUser(User user) {
         em.persist(user);
+        em.flush();
     }
 
-    @Transactional
     @Override
-    public void deleteUser(UserEntity user) {
+    public void deleteUser(User user) {
         em.remove(user);
+        em.flush();
     }
 
-    @Transactional
     @Override
-    public void updateUser(UserEntity user) {
+    public void updateUser(User user) {
         em.refresh(user);
+        em.flush();
     }
 }

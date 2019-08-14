@@ -1,26 +1,21 @@
 package com.accenture.flowershop.be.BusinessService.Order;
 
-import com.accenture.flowershop.be.Entity.Flower.FlowerEntity;
-import com.accenture.flowershop.be.Entity.Order.OrderEntity;
+import com.accenture.flowershop.be.Entity.Flower.Flower;
+import com.accenture.flowershop.be.Entity.Order.Order;
 import java.util.List;
 
 public interface OrderBusinessService  {
 
-    void saveOrder(OrderEntity order);
+    void saveOrder(Order order);
 
-    void delete(OrderEntity order);
+    void delete(Order order);
 
-    void  updateOrder(OrderEntity order);
+    void  updateOrder(Order order);
 
-    OrderEntity findOrder(long orderId);
+    Order findOrder(long orderId);
 
-    List<OrderEntity> findAll();
-
-    OrderEntity getInfoAboutOrder(OrderEntity order);
-
-    double priceOfOne(FlowerEntity flower, int amount);
+    List<Order> findAll();
 
     double getTotalPrice();
 
-    boolean checkFlowerAmount(FlowerEntity flower, int amount);
 }

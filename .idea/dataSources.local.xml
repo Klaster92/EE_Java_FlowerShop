@@ -11,10 +11,7 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="database" qname="@">
-            <node kind="schema">
-              <name qname="@" />
-              <name qname="INFORMATION_SCHEMA" />
-            </node>
+            <node kind="schema" qname="@" />
           </node>
         </introspection-scope>
       </schema-mapping>

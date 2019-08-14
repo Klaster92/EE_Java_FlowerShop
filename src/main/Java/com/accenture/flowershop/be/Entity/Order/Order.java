@@ -3,16 +3,14 @@ package com.accenture.flowershop.be.Entity.Order;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "OrderEntity")
+@Entity(name = "Order")
 @Table(name = "ORDER")
-public class OrderEntity {
-
-    public OrderEntity(){}
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID",updatable = false)
-    private long orderId;
+    private Long orderId;
 
     @Column(name = "BOUGHT_FLOWERS")
     private String boughtFlowers;
@@ -22,6 +20,8 @@ public class OrderEntity {
 
     @Column(name = "TOTAL_COST")
     private double totalCost;
+
+    public Order(){}
 
     public void setOrderId(long orderId) {
         this.orderId = orderId;

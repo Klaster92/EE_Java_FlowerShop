@@ -1,14 +1,15 @@
 package com.accenture.flowershop.be.BusinessService.Flower;
 
-import com.accenture.flowershop.be.Entity.Flower.FlowerEntity;
+
+import com.accenture.flowershop.be.Entity.Flower.Flower;
 
 public interface FlowerBusinessService {
 
-    FlowerEntity findFlowerByName(String flower_name);
+    Flower findFlowerByName(String flower_name);
 
-    void addFlower(FlowerEntity flower);
+    void addFlower(Flower flower);
 
-    void deleteFlower(FlowerEntity flower);
+    void deleteFlower(Flower flower);
 
-    void updateFlower(FlowerEntity flower);
+    void updateFlower(Flower flower);
 }

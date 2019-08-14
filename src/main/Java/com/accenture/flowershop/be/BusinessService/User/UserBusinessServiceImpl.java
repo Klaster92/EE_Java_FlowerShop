@@ -1,7 +1,7 @@
 package com.accenture.flowershop.be.BusinessService.User;
 
 import com.accenture.flowershop.be.DAO.User.UserDAO;
-import com.accenture.flowershop.be.Entity.User.UserEntity;
+import com.accenture.flowershop.be.Entity.User.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,59 +19,45 @@ public class UserBusinessServiceImpl implements UserBusinessService {
 
     @Override
     public boolean userVerification(String login, String password) throws NullPointerException {
-        if (userDAO.getUserList() != null) {
-            try {
-                if (userDAO.findUserByLogin(login).getLogin().equals(login)) {
-                    log.debug("Verification successful");
-                    return true;
-                } else {
-                    log.debug("Wrong login or password");
-                    return false;
-                }
-            } catch (NullPointerException e) {
-                e.printStackTrace();
-            }
+        if(login.isEmpty() || password.isEmpty()) {
+            log.debug("Wrong login or password");
             return false;
         }
+        try {
+            if (findUserByLogin(login).getPassword().equals(password)) {
+                return true;
+            }
+        }catch (NullPointerException e) {
+            log.debug("Wrong login or password");
+            return false;
+        }
+        log.debug("Wrong login or password");
         return false;
-    }
-    //доделать!!!
-    @Override
-    public boolean userRegistration(UserEntity user) {
-        if (!userDAO.getUserList().isEmpty()) {
-            if (userDAO.findUserByLogin(user.getLogin()) != null && user.getPassword() != null) {
-                //if (!StringUtils.isWhitespaceOrEmpty(user.getLogin()) && !StringUtils.isWhitespaceOrEmpty(user.getLogin())) {
-                try {
-                    if (userDAO.findUserByLogin(user.getLogin()) == null) {
-                        userDAO.addUser(user);
-                        log.debug("Registration successful");
-                        return true;
-                    }
-                } catch (NoResultException e) {
-                    e.printStackTrace();
-                    return false;
-                }
-                return false;
-            }
-            return false;
-        } else {
-            userDAO.addUser(user);
-            return true;
-        }
     }
 
     @Override
-    public void deleteUser(UserEntity user) {
+    public boolean userRegistration(User user) {
+        if (userDAO.findUserByLogin(user.getLogin()) == null) {
+            userDAO.addUser(user);
+            log.debug("Registration successful");
+            return true;
+        }
+        log.debug("Registration invalid");
+        return false;
+    }
+
+    @Override
+    public void deleteUser(User user) {
         userDAO.deleteUser(user);
     }
 
     @Override
-    public void updateUser(UserEntity user) {
+    public void updateUser(User user) {
         userDAO.updateUser(user);
     }
 
     @Override
-    public UserEntity findUserByLogin(String login) {
+    public User findUserByLogin(String login) {
         return userDAO.findUserByLogin(login);
     }
 }

@@ -2,17 +2,14 @@ package com.accenture.flowershop.be.Entity.Flower;
 
 import javax.persistence.*;
 
-@Entity(name = "FlowerEntity")
+@Entity(name = "Flower")
 @Table(name = "FLOWER")
-public class FlowerEntity {
-
-    public FlowerEntity(){}
+public class Flower {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", updatable = false, unique = true)
-    private long id;
-
+    private Long id;
 
     @Column(name = "FLOWER_NAME",updatable = false, unique = true)
     private String flower_name;
@@ -22,6 +19,8 @@ public class FlowerEntity {
 
     @Column(name = "NUMBER")
     private int number;
+
+    public Flower(){}
 
     public void setNumber(int number) {
         this.number = number;

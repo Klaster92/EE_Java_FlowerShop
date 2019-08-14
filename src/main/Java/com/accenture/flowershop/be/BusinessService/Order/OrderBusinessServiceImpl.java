@@ -2,10 +2,9 @@ package com.accenture.flowershop.be.BusinessService.Order;
 
 import com.accenture.flowershop.be.DAO.Flower.FlowerDAO;
 import com.accenture.flowershop.be.DAO.Order.OrderDAO;
-import com.accenture.flowershop.be.Entity.Flower.FlowerEntity;
-import com.accenture.flowershop.be.Entity.Order.OrderEntity;
+import com.accenture.flowershop.be.Entity.Flower.Flower;
+import com.accenture.flowershop.be.Entity.Order.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,57 +19,32 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     private FlowerDAO flowerDAO;
 
     @Override
-    public void saveOrder(OrderEntity order) {
+    public void saveOrder(Order order) {
         orderDAO.saveOrder(order);
     }
 
     @Override
-    public void delete(OrderEntity order) {
+    public void delete(Order order) {
         orderDAO.delete(order);
     }
 
     @Override
-    public void updateOrder(OrderEntity order) {
+    public void updateOrder(Order order) {
         orderDAO.updateOrder(order);
     }
 
     @Override
-    public OrderEntity findOrder(long orderId) {
+    public Order findOrder(long orderId) {
         return orderDAO.findOrder(orderId);
     }
 
     @Override
-    public List<OrderEntity> findAll() {
+    public List<Order> findAll() {
         return orderDAO.findAllOrders() ;
-    }
-
-    @Override
-    public OrderEntity getInfoAboutOrder(OrderEntity order) {
-        return orderDAO.getInfoAboutOrder(order);
-    }
-
-    //тут надо подумать
-    @Override
-    public double priceOfOne(FlowerEntity flower, int amount) {
-        if (checkFlowerAmount(flower, amount)) {
-            return flowerDAO.findFlowerByName(flower.getFlowerName()).getPrice() * amount;
-        }else
-            return 0;
     }
 
     @Override
     public double getTotalPrice() {
         return 0;
-    }
-
-    @Override
-    public boolean checkFlowerAmount(FlowerEntity flower, int amount) {
-
-        if (flowerDAO.findFlowerByName(flower.getFlowerName()).getNumber() >= amount) {
-
-            return true;
-        } else {
-            return false;
-        }
     }
 }

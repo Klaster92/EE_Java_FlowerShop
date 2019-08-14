@@ -3,16 +3,14 @@ package com.accenture.flowershop.be.Entity.User;
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 
-@Entity(name = "UserEntity")
+@Entity(name = "User")
 @Table(name = "USER")
-public class UserEntity {
-
-    public UserEntity(){}
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID",updatable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "LOGIN",unique = true, updatable = false)
     private String login;
@@ -43,6 +41,8 @@ public class UserEntity {
 
     @Column(name = "EMAIL",unique = true)
     private String email;
+
+    public User(){}
 
     public String getLogin() {
         return login;

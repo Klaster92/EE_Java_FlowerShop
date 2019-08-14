@@ -1,7 +1,7 @@
 package com.accenture.flowershop.fe.Servlets;
 
 import com.accenture.flowershop.be.BusinessService.User.UserBusinessService;
-import com.accenture.flowershop.be.Entity.User.UserEntity;
+import com.accenture.flowershop.be.Entity.User.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +40,7 @@ public class RegistrationServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,NullPointerException {
 
-        UserEntity user = new UserEntity();
-
+        User user = new User();
         user.setLogin(request.getParameter("login"));
         user.setName(request.getParameter("FirstName"));
         user.setLastName(request.getParameter("LastName"));

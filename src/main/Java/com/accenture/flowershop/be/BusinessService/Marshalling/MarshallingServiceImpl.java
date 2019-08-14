@@ -1,6 +1,6 @@
 package com.accenture.flowershop.be.BusinessService.Marshalling;
 
-import com.accenture.flowershop.be.Entity.User.UserEntity;
+import com.accenture.flowershop.be.Entity.User.User;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -9,9 +9,9 @@ import java.io.File;
 
 public class MarshallingServiceImpl {
 
-    public void convertObjectToXml(UserEntity user) {
+    public void convertObjectToXml(User user) {
         try {
-            JAXBContext context = JAXBContext.newInstance(UserEntity.class);
+            JAXBContext context = JAXBContext.newInstance(User.class);
             Marshaller marshaller = context.createMarshaller();
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

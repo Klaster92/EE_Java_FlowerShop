@@ -1,7 +1,7 @@
 package com.accenture.flowershop.be.BusinessService.Flower;
 
 import com.accenture.flowershop.be.DAO.Flower.FlowerDAO;
-import com.accenture.flowershop.be.Entity.Flower.FlowerEntity;
+import com.accenture.flowershop.be.Entity.Flower.Flower;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +16,22 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
     private FlowerDAO flowerDAO;
 
     @Override
-    public FlowerEntity findFlowerByName(String flower_name) {
+    public Flower findFlowerByName(String flower_name) {
         return flowerDAO.findFlowerByName(flower_name);
     }
 
     @Override
-    public void addFlower(FlowerEntity flower) {
+    public void addFlower(Flower flower) {
         flowerDAO.addFlower(flower);
     }
 
     @Override
-    public void deleteFlower(FlowerEntity flower) {
+    public void deleteFlower(Flower flower) {
         flowerDAO.deleteFlower(flower);
     }
 
     @Override
-    public void updateFlower(FlowerEntity flower) {
+    public void updateFlower(Flower flower) {
         flowerDAO.updateFlower(flower);
     }
 }

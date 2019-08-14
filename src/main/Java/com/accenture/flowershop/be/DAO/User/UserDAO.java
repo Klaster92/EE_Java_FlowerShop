@@ -1,18 +1,18 @@
 package com.accenture.flowershop.be.DAO.User;
 
-import com.accenture.flowershop.be.Entity.User.UserEntity;
+import com.accenture.flowershop.be.Entity.User.User;
 
 import java.util.List;
 
 public interface UserDAO {
 
-    UserEntity findUserByLogin(String login);
+    User findUserByLogin(String login);
 
-    List<UserEntity> getUserList();
+    List<User> getUserList();
 
-    void addUser(UserEntity user);
+    void addUser(User user);
 
-    void deleteUser(UserEntity user);
+    void deleteUser(User user);
 
-    void updateUser(UserEntity user);
+    void updateUser(User user);
 }
