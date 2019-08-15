@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NoResultException;
-
 @Service
 public class UserBusinessServiceImpl implements UserBusinessService {
 
@@ -18,32 +16,46 @@ public class UserBusinessServiceImpl implements UserBusinessService {
     private static final Logger log = 	LoggerFactory.getLogger(UserBusinessServiceImpl.class);
 
     @Override
-    public boolean userVerification(String login, String password) throws NullPointerException {
+    public User userVerification(String login, String password) throws NullPointerException {
         if(login.isEmpty() || password.isEmpty()) {
             log.debug("Wrong login or password");
-            return false;
+            return null;
         }
         try {
             if (findUserByLogin(login).getPassword().equals(password)) {
-                return true;
+                return userDAO.findUserByLogin(login);
             }
         }catch (NullPointerException e) {
             log.debug("Wrong login or password");
-            return false;
+            return null;
         }
         log.debug("Wrong login or password");
-        return false;
+        return null;
     }
 
     @Override
-    public boolean userRegistration(User user) {
+    public User userRegistration(User user) {
         if (userDAO.findUserByLogin(user.getLogin()) == null) {
             userDAO.addUser(user);
             log.debug("Registration successful");
-            return true;
+            return user;
         }
         log.debug("Registration invalid");
-        return false;
+        return null;
+    }
+
+    @Override
+    public User updateBalance(String login, double balance) {
+        User user = userDAO.findUserByLogin(login);
+        double oldBalance = user.getBalance();
+        user.setBalance((oldBalance - balance));
+        userDAO.updateUser(user);
+        return user;
+    }
+
+    @Override
+    public User getInfo(String login) {
+        return userDAO.findUserByLogin(login);
     }
 
     @Override

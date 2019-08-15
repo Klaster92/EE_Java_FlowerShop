@@ -6,12 +6,12 @@ import java.util.List;
 
 public interface FlowerDAO {
 
-    Flower findFlowerByName(String flower_name);
+    Flower findFlowerById(Long id);
 
     List<Flower> getFlowerList();
 
 
-    void addFlower(Flower flower);
+    Flower addFlower(Flower flower);
 
     void deleteFlower(Flower flower);
 

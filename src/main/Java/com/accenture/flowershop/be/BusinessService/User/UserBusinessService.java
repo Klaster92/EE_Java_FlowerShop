@@ -5,9 +5,13 @@ import com.accenture.flowershop.be.Entity.User.User;
 
 public interface UserBusinessService {
 
-    boolean userVerification(String login, String password);
+    User userVerification(String login, String password);
 
-    boolean userRegistration(User user);
+    User userRegistration(User user);
+
+    User updateBalance(String login, double balance);
+
+    User getInfo(String login);
 
     void deleteUser(User user);
 

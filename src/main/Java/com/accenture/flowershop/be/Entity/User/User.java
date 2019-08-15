@@ -42,6 +42,9 @@ public class User {
     @Column(name = "EMAIL",unique = true)
     private String email;
 
+    @Column(name = "ISADMIN")
+    private boolean isAdmin = false;
+
     public User(){}
 
     public String getLogin() {
@@ -126,5 +129,9 @@ public class User {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
     }
 }

@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.NoResultException;
+import java.util.List;
+
 @Service
 public class FlowerBusinessServiceImpl implements FlowerBusinessService {
 
@@ -16,22 +19,22 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
     private FlowerDAO flowerDAO;
 
     @Override
-    public Flower findFlowerByName(String flower_name) {
-        return flowerDAO.findFlowerByName(flower_name);
+    public List<Flower> flowersList() {
+        try {
+            return flowerDAO.getFlowerList();
+        }catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
-    public void addFlower(Flower flower) {
-        flowerDAO.addFlower(flower);
-    }
-
-    @Override
-    public void deleteFlower(Flower flower) {
-        flowerDAO.deleteFlower(flower);
-    }
-
-    @Override
-    public void updateFlower(Flower flower) {
-        flowerDAO.updateFlower(flower);
+    public Flower updateFlowersQuantity(Long id, int quantity) {
+        try{
+            Flower flower = flowerDAO.findFlowerById(id);
+            flower.setQuantity(quantity);
+            return flower;
+        }catch (NoResultException e) {
+            return null;
+        }
     }
 }

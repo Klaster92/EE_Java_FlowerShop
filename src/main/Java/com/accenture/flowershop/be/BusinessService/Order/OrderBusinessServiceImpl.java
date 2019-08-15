@@ -2,11 +2,13 @@ package com.accenture.flowershop.be.BusinessService.Order;
 
 import com.accenture.flowershop.be.DAO.Flower.FlowerDAO;
 import com.accenture.flowershop.be.DAO.Order.OrderDAO;
-import com.accenture.flowershop.be.Entity.Flower.Flower;
 import com.accenture.flowershop.be.Entity.Order.Order;
+import com.accenture.flowershop.be.Entity.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.NoResultException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,12 +17,14 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     @Autowired
     private OrderDAO orderDAO;
 
-    @Autowired
-    private FlowerDAO flowerDAO;
-
     @Override
-    public void saveOrder(Order order) {
-        orderDAO.saveOrder(order);
+    public Order saveOrder(Order order) {
+        try {
+            orderDAO.saveOrder(order);
+            return order;
+        }catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
@@ -29,22 +33,20 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     }
 
     @Override
-    public void updateOrder(Order order) {
-        orderDAO.updateOrder(order);
+    public List<Order> getOrdersByUser(User user) {
+        return null;
     }
 
     @Override
-    public Order findOrder(long orderId) {
-        return orderDAO.findOrder(orderId);
-    }
-
-    @Override
-    public List<Order> findAll() {
+    public List<Order> getAllOrders() {
         return orderDAO.findAllOrders() ;
     }
 
     @Override
-    public double getTotalPrice() {
-        return 0;
+    public void completeOrder(Long id) {
+        Order order = orderDAO.findOrder(id);
+        order.setStatus(OrderStatus.COMPLETED);
+        order.setCompleteDate(new Date());
+        orderDAO.updateOrder(order);
     }
 }

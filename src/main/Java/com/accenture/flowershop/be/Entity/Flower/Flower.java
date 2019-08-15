@@ -50,5 +50,13 @@ public class Flower {
         return id;
     }
 
-
+    @Override
+    public String toString() {
+        return "Flower{" +
+                "id=" + id +
+                ", flower_name='" + flower_name + '\'' +
+                ", price=" + price +
+                ", number=" + number +
+                '}';
+    }
 }

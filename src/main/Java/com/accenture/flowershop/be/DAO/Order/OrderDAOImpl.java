@@ -4,7 +4,6 @@ import com.accenture.flowershop.be.Entity.Order.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -22,10 +21,15 @@ public class OrderDAOImpl implements OrderDAO {
     private static final Logger log = LoggerFactory.getLogger(OrderDAOImpl.class);
 
     @Override
-    public void saveOrder(Order order) {
-        log.debug("save order");
-        em.persist(order);
-        em.flush();
+    public Order saveOrder(Order order) {
+        try {
+            log.debug("save order");
+            em.persist(order);
+            em.flush();
+            return order;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
@@ -36,10 +40,15 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public void updateOrder(Order order) {
-        log.debug("update order");
-        em.refresh(order);
-        em.flush();
+    public Order updateOrder(Order order) {
+        try {
+            log.debug("update order");
+            em.refresh(order);
+            em.flush();
+            return order;
+        }catch (NoResultException e) {
+         return null;
+        }
     }
 
     @Override

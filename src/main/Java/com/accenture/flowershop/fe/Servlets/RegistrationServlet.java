@@ -25,20 +25,15 @@ public class RegistrationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = 	LoggerFactory.getLogger(LoginServlet.class);
+    private static final Logger log = LoggerFactory.getLogger(LoginServlet.class);
 
     public void init(ServletConfig config) throws ServletException {
         super.init((ServletConfig) config);
-        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,config.getServletContext());
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/lib/RegistrationPage.jsp").forward(request,response);
+        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException,NullPointerException {
+            throws ServletException, IOException, NullPointerException {
 
         User user = new User();
         user.setLogin(request.getParameter("login"));
@@ -49,10 +44,14 @@ public class RegistrationServlet extends HttpServlet {
         user.setAddress(request.getParameter("Address"));
         user.setEmail(request.getParameter("Email"));
         user.setPhoneNumber(request.getParameter("PhoneNumber"));
-
-        if (userBusinessService.userRegistration(user)){
-            request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request,response);
+        if (userBusinessService.userRegistration(user)) {
+            request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/lib/WrongData.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/lib/WrongData.jsp").forward(request, response);
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/lib/RegistrationPage.jsp").forward(request, response);
     }
 }

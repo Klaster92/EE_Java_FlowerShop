@@ -4,7 +4,6 @@ import com.accenture.flowershop.be.Entity.Flower.Flower;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -23,7 +22,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     private static final Logger log = LoggerFactory.getLogger(FlowerDAOImpl.class);
 
     @Override
-    public Flower findFlowerByName(String flower_name) {
+    public Flower findFlowerById(Long id) {
         try{
             log.debug("finding flower by name");
             TypedQuery<Flower> query;
@@ -47,10 +46,16 @@ public class FlowerDAOImpl implements FlowerDAO {
     }
 
     @Override
-    public void addFlower(Flower flower) {
-        log.debug("saving flower");
-        em.persist(flower);
-        em.flush();
+    public Flower addFlower(Flower flower) {
+        try {
+            log.debug("saving flower");
+            em.persist(flower);
+            em.flush();
+            return  flower;
+        }catch(NoResultException e) {
+            return null;
+        }
+
     }
 
     @Override

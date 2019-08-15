@@ -1,5 +1,7 @@
 package com.accenture.flowershop.be.Entity.Order;
 
+import com.accenture.flowershop.be.Entity.User.User;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,48 +12,40 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID",updatable = false)
-    private Long orderId;
+    private Long id;
 
-    @Column(name = "BOUGHT_FLOWERS")
-    private String boughtFlowers;
+    @Column
+    private Date createDate;
 
-    @Column(name = "BUYING_DATE")
-    private Date buyingDate;
+    @Column
+    private Date completeDate;
 
-    @Column(name = "TOTAL_COST")
-    private double totalCost;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ID")
+    private User user;
+    private double subTotal;
 
-    public Order(){}
-
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
+    public void setCompleteDate(Date completeDate) {
+        this.completeDate = completeDate;
     }
 
-    public long getOrderId() {
-        return orderId;
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
-    public void setBoughtFlowers(String flowers_name){
-        this.boughtFlowers = flowers_name;
-    }
+    public OrderStatus status;
 
-    public  String getBoughtFlowers(){
-        return boughtFlowers;
-    }
+    public Order() {}
 
-    public void setBuyingDate(Date buyingDate){
-        this.buyingDate = buyingDate;
-    }
-
-    public  Date getBuyingDate(){
-        return buyingDate;
-    }
-
-    public  void setTotalCost(double totalCost){
-        this.totalCost = totalCost;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", createDate=" + createDate +
+                ", completeDate=" + completeDate +
+                ", user=" + user +
+                ", subTotal=" + subTotal +
+                ", status=" + status +
+                '}';
     }
 }

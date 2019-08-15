@@ -3,13 +3,11 @@ package com.accenture.flowershop.be.BusinessService.Flower;
 
 import com.accenture.flowershop.be.Entity.Flower.Flower;
 
+import java.util.List;
+
 public interface FlowerBusinessService {
 
-    Flower findFlowerByName(String flower_name);
+    List<Flower> flowersList();
 
-    void addFlower(Flower flower);
-
-    void deleteFlower(Flower flower);
-
-    void updateFlower(Flower flower);
+    Flower updateFlowersQuantity(Long id, int quantity);
 }
