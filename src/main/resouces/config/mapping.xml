@@ -1,0 +1,15 @@
+<mapping>
+    <class name="be.utils.DiscountRequest">
+
+        <map-to xml="discountRequest"/>
+
+        <field name="idUser" type="long">
+            <bind-xml name="idUser" node="element" />
+        </field>
+
+        <field name="discount" type="integer">
+            <bind-xml name="discount" node="element" />
+        </field>
+
+    </class>
+</mapping>

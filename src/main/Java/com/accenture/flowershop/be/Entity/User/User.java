@@ -1,7 +1,10 @@
 package com.accenture.flowershop.be.Entity.User;
 
+import com.accenture.flowershop.fe.enums.UserType;
+
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
+import javax.xml.bind.annotation.XmlElement;
 import java.math.BigDecimal;
 
 @Entity(name = "User")
@@ -15,6 +18,11 @@ public class User {
 
     @Column(name = "LOGIN",unique = true, updatable = false)
     private String login;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ROLE")
+    @XmlElement(name = "role")
+    private UserType role;
 
     @Column(name = "FIRST_NAME")
     private String name;
@@ -42,9 +50,6 @@ public class User {
 
     @Column(name = "EMAIL",unique = true)
     private String email;
-
-    @Column(name = "ISADMIN")
-    private boolean isAdmin = false;
 
     public User(){}
 
@@ -124,6 +129,8 @@ public class User {
         return id;
     }
 
+    public void setId(Long id) {this.id = id;}
+
     public int getDiscount() {
         return discount;
     }
@@ -132,7 +139,12 @@ public class User {
         this.discount = discount;
     }
 
-    public boolean getIsAdmin() {
-        return isAdmin;
+    public org.hibernate.usertype.UserType getRole() {
+        return role;
     }
+
+    public void setRole(UserType role) {
+        this.role = role;
+    }
+
 }

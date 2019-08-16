@@ -19,15 +19,15 @@ public class Flower {
     private BigDecimal price;
 
     @Column(name = "NUMBER")
-    private int number;
+    private Long number;
 
     public Flower(){}
 
-    public void setNumber(int number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public Long getNumber() {
         return number;
     }
 
@@ -50,6 +50,8 @@ public class Flower {
     public long getFlowerId() {
         return id;
     }
+
+    public void setFlowerId(Long id) {this.id = id;}
 
     @Override
     public String toString() {
