@@ -24,16 +24,10 @@ public class UserBusinessServiceImpl implements UserBusinessService {
             log.debug("Wrong login or password");
             return null;
         }
-        try {
-            if (findUserByLogin(login) != null ) {
-                if(findUserByLogin(login).getPassword().equals(password))
-                return userDAO.findUserByLogin(login);
-            }
-        }catch (NullPointerException e) {
-            log.debug("Wrong login or password");
-            return null;
+        User user = findUserByLogin(login);
+        if (user.getPassword().equals(password)) { //тоже ерунда. Переделать
+            return user;
         }
-        log.debug("Wrong login or password");
         return null;
     }
 

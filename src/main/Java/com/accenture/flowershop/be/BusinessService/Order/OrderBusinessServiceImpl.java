@@ -41,7 +41,6 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     public void completeOrder(Long id) {
         Order order = orderDAO.findOrder(id);
         order.setStatus(OrderStatus.COMPLETED);
-        order.setCompleteDate(new Date());
         orderDAO.updateOrder(order);
     }
 }

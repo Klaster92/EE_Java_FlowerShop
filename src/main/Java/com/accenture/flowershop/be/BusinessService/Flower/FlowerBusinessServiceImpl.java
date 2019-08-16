@@ -27,12 +27,10 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
         }
     }
 
-
-
     @Override
     public Flower updateFlowersNumber(Long id, Long number) {
-            Flower flower = flowerDAO.findFlowerById(id);
-            flower.setNumber(number);
-            return flower;
+            Flower flower = flowerDAO.findFlowerById(id); //переделать
+            flower.setNumber(number);///////////////////////в
+            return flower;//////////////////////////////////запрос
     }
 }
