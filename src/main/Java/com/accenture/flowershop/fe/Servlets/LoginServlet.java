@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             try {
 
-                if (userBusinessService.userVerification(login, password)) {
+                if (userBusinessService.userVerification(login, password) != null) {
 
                     /*HttpSession session = request.getSession();
                     session.setAttribute("user",userBusinessService.findUserByLogin(login));

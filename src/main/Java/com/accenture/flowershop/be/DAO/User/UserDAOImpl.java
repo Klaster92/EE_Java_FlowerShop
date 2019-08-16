@@ -44,20 +44,6 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    public User getUserByLoginAndPassword(String login, String password) {
-        try{
-            TypedQuery<User> query = em.createQuery
-                    ("select u from User u where u.login=:login and "
-                            + "u.password=:password", User.class);
-            query.setParameter("login", login);
-            query.setParameter("password", password);
-            User user = query.getSingleResult();
-            return user;
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
     @Override
     public User addUser(User user) {
             em.persist(user);

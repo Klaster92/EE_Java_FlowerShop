@@ -7,19 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6ff9da-c41a-4f32-ae63-c06892657601" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Order/OrderBusinessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Order/OrderBusinessServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Flower/FlowerDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Flower/FlowerDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/User/UserBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/User/UserBusinessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/User/UserBusinessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/User/UserBusinessServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/User/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/User/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/User/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/CXFServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/RegistrationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Flower/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Flower/Flower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/LoginServlet.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -266,7 +260,7 @@
       <workItem from="1565849124805" duration="3123000" />
       <workItem from="1565854093855" duration="35000" />
       <workItem from="1565854160851" duration="14357000" />
-      <workItem from="1565935047970" duration="1280000" />
+      <workItem from="1565935047970" duration="3233000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 package com.accenture.flowershop.be.Entity.Flower;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity(name = "Flower")
 @Table(name = "FLOWER")
@@ -15,7 +16,7 @@ public class Flower {
     private String flower_name;
 
     @Column(name = "PRICE")
-    private double price;
+    private BigDecimal price;
 
     @Column(name = "NUMBER")
     private int number;
@@ -38,11 +39,11 @@ public class Flower {
         return flower_name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

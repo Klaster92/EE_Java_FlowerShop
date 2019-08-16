@@ -1,6 +1,5 @@
 package com.accenture.flowershop.be.BusinessService.Order;
 
-import com.accenture.flowershop.be.DAO.Flower.FlowerDAO;
 import com.accenture.flowershop.be.DAO.Order.OrderDAO;
 import com.accenture.flowershop.be.Entity.Order.Order;
 import com.accenture.flowershop.be.Entity.User.User;
@@ -8,7 +7,6 @@ import com.accenture.flowershop.fe.enums.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NoResultException;
 import java.util.Date;
 import java.util.List;
 
@@ -20,12 +18,8 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
 
     @Override
     public Order saveOrder(Order order) {
-        try {
             orderDAO.saveOrder(order);
             return order;
-        }catch (NoResultException e) {
-            return null;
-        }
     }
 
     @Override

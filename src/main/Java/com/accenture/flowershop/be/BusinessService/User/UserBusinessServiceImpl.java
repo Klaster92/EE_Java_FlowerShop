@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.math.BigDecimal;
 
 @Service
 public class UserBusinessServiceImpl implements UserBusinessService {
@@ -22,7 +25,8 @@ public class UserBusinessServiceImpl implements UserBusinessService {
             return null;
         }
         try {
-            if (findUserByLogin(login).getPassword().equals(password)) {
+            if (findUserByLogin(login) != null ) {
+                if(findUserByLogin(login).getPassword().equals(password))
                 return userDAO.findUserByLogin(login);
             }
         }catch (NullPointerException e) {
@@ -35,6 +39,10 @@ public class UserBusinessServiceImpl implements UserBusinessService {
 
     @Override
     public User userRegistration(User user) {
+        if(StringUtils.containsWhitespace(user.getLogin()) && !StringUtils.containsWhitespace(user.getPassword())) {
+            log.debug("Registration invalid");
+            return null;
+        }
         if (userDAO.findUserByLogin(user.getLogin()) == null) {
             userDAO.addUser(user);
             log.debug("Registration successful");
@@ -45,17 +53,12 @@ public class UserBusinessServiceImpl implements UserBusinessService {
     }
 
     @Override
-    public User updateBalance(String login, double balance) {
+    public User updateBalance(String login, BigDecimal balance) {
         User user = userDAO.findUserByLogin(login);
-        double oldBalance = user.getBalance();
-        user.setBalance((oldBalance - balance));
+        BigDecimal oldBalance = user.getBalance();
+        user.setBalance((oldBalance.subtract(balance)));
         userDAO.updateUser(user);
         return user;
-    }
-
-    @Override
-    public User getInfo(String login) {
-        return userDAO.findUserByLogin(login);
     }
 
     @Override
