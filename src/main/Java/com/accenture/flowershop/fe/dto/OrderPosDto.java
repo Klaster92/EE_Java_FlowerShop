@@ -1,7 +1,6 @@
 package com.accenture.flowershop.fe.dto;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class OrderPosDto {
 
@@ -17,7 +16,6 @@ public class OrderPosDto {
         this.number = number;
         this.order = order;
         this.flower = flower;
-        computePrice();
     }
 
     public FlowerDto getFlower() {
@@ -52,8 +50,4 @@ public class OrderPosDto {
         this.price = price;
     }
 
-    public void computePrice(){
-        BigDecimal price = flower.getPrice().multiply(new BigDecimal(number));
-        this.setPrice(price.setScale(2, RoundingMode.HALF_DOWN));
-    }
 }

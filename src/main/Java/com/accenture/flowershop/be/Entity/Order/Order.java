@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,17 +14,16 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cust")
-    @SequenceGenerator(name = "cust", sequenceName = "seq_order", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order")
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     private User user;
 
     @OneToMany(mappedBy = "order",
-            orphanRemoval = true, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+            orphanRemoval = true, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     private List<OrderPos> orderPos = new ArrayList<>();
 
     @Column(name = "total_price")

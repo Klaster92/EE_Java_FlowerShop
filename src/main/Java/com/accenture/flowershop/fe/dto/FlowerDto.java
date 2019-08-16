@@ -15,7 +15,7 @@ public class FlowerDto {
         this.price = new BigDecimal(0);
     }
 
-    @Mapping("id")
+    //@Mapping("id")
     public Long getIdFlower() {
         return idFlower;
     }
@@ -44,7 +44,7 @@ public class FlowerDto {
         return number;
     }
 
-    public void setNumber(Long quantity) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 }

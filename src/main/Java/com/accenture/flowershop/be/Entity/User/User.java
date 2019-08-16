@@ -5,8 +5,10 @@ import com.accenture.flowershop.fe.enums.UserType;
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+@XmlRootElement
 @Entity(name = "User")
 @Table(name = "USER")
 public class User {
@@ -139,7 +141,7 @@ public class User {
         this.discount = discount;
     }
 
-    public org.hibernate.usertype.UserType getRole() {
+    public UserType getRole() {
         return role;
     }
 

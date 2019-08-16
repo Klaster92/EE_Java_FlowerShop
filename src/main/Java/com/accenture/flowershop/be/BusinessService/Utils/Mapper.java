@@ -122,7 +122,7 @@ public class Mapper {
     public static List<OrderPos> mapOrderPositions(List<OrderPosDto> orderPosDtoList) {
         if (orderPosDtoList != null) {
             List<OrderPos> orderPositions = new ArrayList<>();
-            for (OrderPosDto orderPositionDto : orderPosDtoList) {
+            for (OrderPosDto orderPosDto : orderPosDtoList) {
                 orderPositions.add(map(orderPosDto));
             }
             return orderPositions;

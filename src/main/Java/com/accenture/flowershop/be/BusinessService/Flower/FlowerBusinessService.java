@@ -9,5 +9,5 @@ public interface FlowerBusinessService {
 
     List<Flower> flowersList();
 
-    Flower updateFlowersNumber(Long id, int number);
+    Flower updateFlowersNumber(Long id, Long number);
 }

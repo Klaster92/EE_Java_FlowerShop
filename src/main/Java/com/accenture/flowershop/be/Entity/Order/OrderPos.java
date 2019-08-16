@@ -17,6 +17,7 @@ public class OrderPos {
                     column = @Column(name = "id_flower"))
     })
     private Order order;
+
     private Flower flower;
 
     @Column(name = "quantity")
@@ -45,7 +46,7 @@ public class OrderPos {
         return number;
     }
 
-    public void setNumber(Long quantity) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 }

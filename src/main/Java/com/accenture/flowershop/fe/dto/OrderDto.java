@@ -19,12 +19,9 @@ public class OrderDto {
     private String dateClose;
 
     public OrderDto() {
-        this.orderPos = new ArrayList<>();
-        this.totalPrice = new BigDecimal(0);
-        this.status = OrderStatus.CREATED;
     }
 
-    @Mapping("id")
+    //@Mapping("id")
     public Long getIdOrder() {
         return idOrder;
     }
@@ -85,15 +82,6 @@ public class OrderDto {
 
     public void setDateClose(String dateClose) {
         this.dateClose = dateClose;
-    }
-
-    public void computePrice() {
-        BigDecimal price = BigDecimal.ZERO;
-        for (OrderPosDto orderPositionDto : orderPos) {
-            price = price.add(orderPositionDto.getPrice());
-        }
-        this.totalPrice = price.multiply(new BigDecimal(100).subtract(new BigDecimal(user.getDiscount()))
-                .divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_DOWN);
     }
 
 }
