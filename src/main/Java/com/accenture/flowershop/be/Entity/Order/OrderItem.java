@@ -3,12 +3,13 @@ package com.accenture.flowershop.be.Entity.Order;
 import com.accenture.flowershop.be.Entity.Flower.Flower;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class OrderItem {
 
     @Id
-    @Column
+    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -20,8 +21,10 @@ public class OrderItem {
     @JoinColumn(name = "FLOWERID")
     private Flower flower;
 
+    @Column(name = "COST")
+    private BigDecimal cost;
 
-    private double cost;
-    private double sum;
+    @Column(name = "SUM")
+    private BigDecimal sum;
 
 }

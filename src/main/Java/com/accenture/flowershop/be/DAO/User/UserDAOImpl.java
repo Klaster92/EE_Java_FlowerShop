@@ -60,14 +60,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User addUser(User user) {
-        try{
             em.persist(user);
             em.flush();
             return user;
-        } catch (NoResultException e) {
-            return null;
-        }
-
     }
 
     @Override
@@ -78,13 +73,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User updateUser(User user) {
-        try {
-            em.refresh(user);
+            em.merge(user);
             em.flush();
             return user;
-        }catch (NoResultException e) {
-            return null;
-        }
-
     }
 }

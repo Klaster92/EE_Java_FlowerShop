@@ -1,6 +1,7 @@
 package com.accenture.flowershop.be.Entity.Order;
 
 import com.accenture.flowershop.be.Entity.User.User;
+import com.accenture.flowershop.fe.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.util.Date;

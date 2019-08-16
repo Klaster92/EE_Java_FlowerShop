@@ -28,10 +28,10 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
     }
 
     @Override
-    public Flower updateFlowersQuantity(Long id, int quantity) {
+    public Flower updateFlowersNumber(Long id, int number) {
         try{
             Flower flower = flowerDAO.findFlowerById(id);
-            flower.setQuantity(quantity);
+            flower.setNumber(number);
             return flower;
         }catch (NoResultException e) {
             return null;

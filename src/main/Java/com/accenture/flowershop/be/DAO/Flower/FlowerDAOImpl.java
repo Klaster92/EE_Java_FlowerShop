@@ -47,14 +47,11 @@ public class FlowerDAOImpl implements FlowerDAO {
 
     @Override
     public Flower addFlower(Flower flower) {
-        try {
             log.debug("saving flower");
             em.persist(flower);
             em.flush();
             return  flower;
-        }catch(NoResultException e) {
-            return null;
-        }
+
 
     }
 
@@ -68,7 +65,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     @Override
     public void updateFlower(Flower flower) {
         log.debug("updating flower");
-        em.refresh(flower);
+        em.merge(flower);
         em.flush();
     }
 }

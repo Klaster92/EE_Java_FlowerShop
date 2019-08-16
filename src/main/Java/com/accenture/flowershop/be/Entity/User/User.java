@@ -2,6 +2,7 @@ package com.accenture.flowershop.be.Entity.User;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
+import java.math.BigDecimal;
 
 @Entity(name = "User")
 @Table(name = "USER")
@@ -34,7 +35,7 @@ public class User {
     private String password;
 
     @Column(name = "BALANCE")
-    private double balance = 2000;
+    private BigDecimal balance = BigDecimal.valueOf(2000);
 
     @Column(name = "DISCOUNT")
     private int discount = 3;
@@ -111,11 +112,11 @@ public class User {
         this.password = password;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

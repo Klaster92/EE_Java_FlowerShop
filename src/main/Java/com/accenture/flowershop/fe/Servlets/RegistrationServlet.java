@@ -44,7 +44,7 @@ public class RegistrationServlet extends HttpServlet {
         user.setAddress(request.getParameter("Address"));
         user.setEmail(request.getParameter("Email"));
         user.setPhoneNumber(request.getParameter("PhoneNumber"));
-        if (userBusinessService.userRegistration(user)) {
+        if (userBusinessService.userRegistration(user) != null) {
             request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request, response);
         }
         request.getRequestDispatcher("/WEB-INF/lib/WrongData.jsp").forward(request, response);

@@ -22,14 +22,10 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Order saveOrder(Order order) {
-        try {
             log.debug("save order");
             em.persist(order);
             em.flush();
             return order;
-        } catch (NoResultException e) {
-            return null;
-        }
     }
 
     @Override
@@ -41,14 +37,10 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Order updateOrder(Order order) {
-        try {
             log.debug("update order");
             em.refresh(order);
             em.flush();
             return order;
-        }catch (NoResultException e) {
-         return null;
-        }
     }
 
     @Override
