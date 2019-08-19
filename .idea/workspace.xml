@@ -7,14 +7,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6ff9da-c41a-4f32-ae63-c06892657601" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/aleksandr_serykh.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/repositories/FlowerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/repositories/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Order/OrderBusinessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Order/OrderBusinessServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/User/UserBusinessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/User/UserBusinessServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/BusinessService/Marshalling/MarshallingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/OrderPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/OrderPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/User/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resouces/dbscripts/v1__flower.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/dbscripts/v1__flower.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resouces/dbscripts/v2__user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/dbscripts/v2__user.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resouces/dbscripts/v3__order.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/dbscripts/v3__order.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resouces/flowerShopDs.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/flowerShopDs.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resouces/flowerShopDs.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/flowerShopDs.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/Flower/FlowerBusinessServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/Marshalling/MarshallingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/Order/OrderBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/Order/OrderBusinessServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/User/UserBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/BusinessService/User/UserBusinessServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/Flower/FlowerDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/Flower/FlowerDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/Order/OrderDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/User/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/User/UserDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Flower/Flower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/User/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/Servlets/LoginServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/Servlets/RegistrationServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/Application-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/Application-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dbscripts/v1__flower.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dbscripts/v1__flower.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dbscripts/v2__user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dbscripts/v2__user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dbscripts/v3__order.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dbscripts/v3__order.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/flowerShopDs.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/flowerShopDs.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/flowerShopDs.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/flowerShopDs.trace.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +69,23 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="flowerShopDs" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="flowerShopDs" type="feb32156:DbDataSourceImpl" />
+        <item name="FLOWERSHOPDS: database" type="2aa06773:H2ImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="flowerShopDs" type="feb32156:DbDataSourceImpl" />
+        <item name="FLOWERSHOPDS: database" type="2aa06773:H2ImplModel$Database" />
+        <item name="PUBLIC: schema" type="7f85d983:H2ImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="ExecutionTargetDialog">
@@ -58,9 +102,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -262,7 +306,9 @@
       <workItem from="1565849124805" duration="3123000" />
       <workItem from="1565854093855" duration="35000" />
       <workItem from="1565854160851" duration="14357000" />
-      <workItem from="1565935047970" duration="16503000" />
+      <workItem from="1565935047970" duration="18206000" />
+      <workItem from="1565960476379" duration="687000" />
+      <workItem from="1566036019685" duration="3286000" />
     </task>
     <servers />
   </component>

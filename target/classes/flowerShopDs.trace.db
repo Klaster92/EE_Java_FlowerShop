@@ -2091,3 +2091,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/ale
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:347)
 	... 36 more
+2019-08-16 16:00:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP TABLE ORDER[*] "; expected "identifier"; SQL statement:
+drop table ORDER [42001-199]

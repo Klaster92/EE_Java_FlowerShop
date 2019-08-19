@@ -1,16 +1,20 @@
 CREATE sequence USER_SEQ;
 
-CREATE TABLE "USER"
-("ID" NUMBER(20,0) auto_increment PRIMARY KEY ,
- "LOGIN" VARCHAR2(10 CHAR) NOT NULL,
- "FIRST_NAME" VARCHAR2(15 CHAR) NOT NULL,
- "LAST_NAME" VARCHAR2(20 CHAR),
- "MIDDLE_NAME" VARCHAR2(15 CHAR),
- "PASSWORD" VARCHAR2(20 CHAR) NOT NULL,
- "ADDRESS" VARCHAR2(45 CHAR),
- "PHONE_NUMBER" VARCHAR2(11 CHAR),
- "EMAIL" VARCHAR2(20 CHAR),
- "BALANCE" DECIMAL(10,2),
- "DISCOUNT" TINYINT(2),
+create table USERS(
+                      role varchar2 check(role in ('ADMIN', 'USER')),
+                      id_user number(10,0),
+                      login varchar2(100),
+                      password varchar2(20),
+                      address varchar2(100),
+                      phoneNumber varchar2(11),
+                      last_name varchar2(30),
+                      first_name varchar2(30),
+                      middle_name varchar2(30),
+                      balance decimal(15,2),
+                      discount number(3, 0),
+                      primary key (id_user),
+                      unique(login)
+);
+ALTER TABLE USERS ALTER COLUMN ROLE SET DEFAULT 'USER';
 
- UNIQUE (LOGIN,PHONE_NUMBER));
+insert into "USERS"(id_user, role, login, password, address, balance, discount) values (USER_SEQ.nextval, 'ADMIN','admin', 'admin', 'rtyu@mail.ru', 99999, 25);

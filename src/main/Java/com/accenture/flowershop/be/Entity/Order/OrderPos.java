@@ -3,7 +3,6 @@ package com.accenture.flowershop.be.Entity.Order;
 import com.accenture.flowershop.be.Entity.Flower.Flower;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "ORDERPOSITION")
@@ -20,7 +19,7 @@ public class OrderPos {
 
     private Flower flower;
 
-    @Column(name = "quantity")
+    @Column(name = "number")
     private Long number;
 
     public OrderPos() {

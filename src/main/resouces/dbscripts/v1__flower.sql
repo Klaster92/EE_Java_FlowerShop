@@ -9,6 +9,6 @@ create table FLOWERS(
                         unique (name_flower)
 );
 
-insert into "FLOWERS"(id_flower, name_flower, price, number) values (FLOWER_SEQ.nextval, 'White rose', 30, 40);
-insert into "FLOWERS"(id_flower, name_flower, price, number) values (FLOWER_SEQ.nextval, 'Red rose', 35, 45);
-insert into "FLOWERS"(id_flower, name_flower, price, number) values (FLOWER_SEQ.nextval, 'Black rose', 40, 20);
+insert into "FLOWERS"(id_flower, name_flower, price, number) values (FLOWER_SEQ.nextval, 'White rose', 120, 40);
+insert into "FLOWERS"(id_flower, name_flower, price, number) values (FLOWER_SEQ.nextval, 'Red rose', 100, 45);
+insert into "FLOWERS"(id_flower, name_flower, price, number) values (FLOWER_SEQ.nextval, 'Black rose', 200, 20);

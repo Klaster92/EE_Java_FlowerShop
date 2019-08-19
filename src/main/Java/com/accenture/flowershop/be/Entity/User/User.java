@@ -16,9 +16,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID",updatable = false)
+    @XmlElement(name = "id")
     private Long id;
 
     @Column(name = "LOGIN",unique = true, updatable = false)
+    @XmlElement(name = "role")
     private String login;
 
     @Enumerated(EnumType.STRING)
