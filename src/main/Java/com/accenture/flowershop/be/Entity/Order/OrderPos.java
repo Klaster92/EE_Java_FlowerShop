@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ORDERPOSITION")
+@IdClass(Operations.class)
 public class OrderPos {
 
     @Id

@@ -14,6 +14,8 @@ public interface OrderDAO {
 
     Order findOrder(long orderId);
 
+    List<Order> getAllMyOrders(Long idUser);
+
     List<Order> findAllOrders();
 
 }

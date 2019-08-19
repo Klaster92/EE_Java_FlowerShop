@@ -1,5 +1,6 @@
 package com.accenture.flowershop.be.Entity.User;
 
+import com.accenture.flowershop.be.Entity.Order.Order;
 import com.accenture.flowershop.fe.enums.UserType;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
+import java.util.List;
 
 @XmlRootElement
 @Entity(name = "User")
@@ -15,11 +17,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID",updatable = false)
+    @Column(name = "ID")
     @XmlElement(name = "id")
     private Long id;
 
-    @Column(name = "LOGIN",unique = true, updatable = false)
+    @Column(name = "LOGIN")
     @XmlElement(name = "role")
     private String login;
 
@@ -28,32 +30,44 @@ public class User {
     @XmlElement(name = "role")
     private UserType role;
 
+    @XmlElement(name = "FIRST_NAME")
     @Column(name = "FIRST_NAME")
     private String name;
 
+    @XmlElement(name = "LAST_NAME")
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    @XmlElement(name = "MIDDLE_NAME")
     @Column(name = "MIDDLE_NAME")
     private String middleName;
 
+    @XmlElement(name = "PHONE_NUMBER")
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    @XmlElement(name = "ADRESS")
     @Column(name = "ADDRESS")
     private String address;
 
+    @XmlElement(name = "PASSWORD")
     @Column(name = "PASSWORD")
     private String password;
 
+    @XmlElement(name = "BALANCE")
     @Column(name = "BALANCE")
     private BigDecimal balance = BigDecimal.valueOf(2000);
 
+    @XmlElement(name = "DISCOUNT")
     @Column(name = "DISCOUNT")
     private int discount = 3;
 
+    @XmlElement(name = "EMAIL")
     @Column(name = "EMAIL",unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public User(){}
 
@@ -151,4 +165,5 @@ public class User {
         this.role = role;
     }
 
+    public List<Order> getOrders() {return orders;}
 }

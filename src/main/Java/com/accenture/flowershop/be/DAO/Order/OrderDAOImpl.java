@@ -56,6 +56,14 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
+    public List<Order> getAllMyOrders(Long idUser) {
+
+        TypedQuery<Order> query = em.createQuery("select o from Order o where o.user.idUser = :id", Order.class);
+        query.setParameter("id", idUser);
+        return query.getResultList();
+    }
+
+    @Override
     public List<Order> findAllOrders() {
         try {
             TypedQuery<Order> query;

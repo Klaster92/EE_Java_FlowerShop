@@ -10,6 +10,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Repository
@@ -41,6 +42,15 @@ public class UserDAOImpl implements UserDAO {
             return query.getResultList();
         } catch (NoResultException e) {
             return null;
+        }
+    }
+
+    @Override
+    public Optional<User> getUserById(Long id) {
+        try {
+            return Optional.of(em.find(User.class, id));
+        } catch (NoResultException e) {
+            return Optional.empty();
         }
     }
 

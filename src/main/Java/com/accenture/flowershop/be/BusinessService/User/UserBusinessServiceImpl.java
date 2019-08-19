@@ -1,11 +1,13 @@
 package com.accenture.flowershop.be.BusinessService.User;
 
+import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.be.DAO.User.UserDAO;
 import com.accenture.flowershop.be.Entity.User.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
@@ -68,5 +70,21 @@ public class UserBusinessServiceImpl implements UserBusinessService {
     @Override
     public User findUserByLogin(String login) {
         return userDAO.findUserByLogin(login);
+    }
+
+    @Override
+    public User getUserById(Long id) throws ServiceException {
+
+        return userDAO.getUserById(id).orElseThrow(() -> new ServiceException(ServiceException.ERROR_FIND_USER));
+    }
+
+    @Override
+    @Transactional(rollbackFor = ServiceException.class)
+    public void updateDiscount(Long idUser, Integer newDiscount) throws ServiceException {
+        if(newDiscount < 0){
+            throw new ServiceException(ServiceException.ERROR_INVALIDATE_DATA);
+        }
+        User user = getUserById(idUser);
+        user.setDiscount(newDiscount);
     }
 }

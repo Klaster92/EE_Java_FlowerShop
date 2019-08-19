@@ -1,5 +1,5 @@
 <mapping>
-    <class name="be.utils.DiscountRequest">
+    <class name="com.accenture.flowershop.be.DAO.utils.DiscountRequest">
 
         <map-to xml="discountRequest"/>
 

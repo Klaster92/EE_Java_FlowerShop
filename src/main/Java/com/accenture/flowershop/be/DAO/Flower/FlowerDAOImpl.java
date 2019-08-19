@@ -1,5 +1,6 @@
 package com.accenture.flowershop.be.DAO.Flower;
 
+import com.accenture.flowershop.be.BusinessService.Utils.FlowerFilter;
 import com.accenture.flowershop.be.Entity.Flower.Flower;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Transactional
@@ -67,5 +69,16 @@ public class FlowerDAOImpl implements FlowerDAO {
         log.debug("updating flower");
         em.merge(flower);
         em.flush();
+    }
+
+    @Override
+    public List<Flower> searchFilter (FlowerFilter filter) {
+        String temp = filter.toString();
+        TypedQuery<Flower> q = em.createQuery("select f from Flower f where " + temp, Flower.class);
+        q.setParameter("minprice", new BigDecimal(filter.getMinPrice()));
+        q.setParameter("maxprice", new BigDecimal(filter.getMaxPrice()));
+        q.setParameter("name", filter.getName());
+        return q.getResultList();
+
     }
 }
