@@ -1,0 +1,39 @@
+.body{
+    font:sans-serif;
+}
+.row{
+    margin-bottom:20px;
+}
+table{
+    display:inline-block;
+    text-align:center;
+    color:black;
+    border-collapse:collapse;
+    font-size:20px;
+}
+
+td,th{
+    background-color:whitesmoke;
+    border:2px solid grey;
+    height:50px;
+    width:100px;
+}
+th{
+    background-color:silver;
+}
+tr td:first-child {
+    width:auto;
+}
+p.err{
+    color:red;
+    font-weight:bold;
+}
+p.msg{
+    color:green;
+    font-weight:bold;
+}
+td>button{
+    width:inherit;
+    height:inherit;
+    font-size:20px;
+}

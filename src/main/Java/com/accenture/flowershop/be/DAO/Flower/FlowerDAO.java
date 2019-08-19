@@ -20,5 +20,4 @@ public interface FlowerDAO {
 
     List<Flower> searchFilter(FlowerFilter filter);
 
-    List<Flower> searchFilter (FlowerFilter filter);
 }

@@ -47,7 +47,7 @@ public class RegistrationServlet extends HttpServlet {
         if (userBusinessService.userRegistration(user) != null) {
             request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/lib/WrongData.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -15,160 +15,261 @@
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <table id="5" parent="4" name="ORDER"/>
-    <table id="6" parent="4" name="USER"/>
-    <table id="7" parent="4" name="flyway_schema_history"/>
-    <column id="8" parent="5" name="ID">
+    <table id="5" parent="4" name="FLOWERS"/>
+    <table id="6" parent="4" name="ORDERPOSITION"/>
+    <table id="7" parent="4" name="ORDERS"/>
+    <table id="8" parent="4" name="USERS"/>
+    <table id="9" parent="4" name="flyway_schema_history"/>
+    <column id="10" parent="5" name="ID_FLOWER">
       <Position>1</Position>
-      <DataType>BIGINT(19)|-5s</DataType>
+      <DataType>DECIMAL(10)|3s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_2A0BAD52_40C7_4643_AE3B_75FAC3081C7F)</DefaultExpression>
     </column>
-    <column id="9" parent="5" name="BOUGHT_FLOWERS">
+    <column id="11" parent="5" name="NAME_FLOWER">
       <Position>2</Position>
-      <DataType>VARCHAR(255)|12s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>VARCHAR(30)|12s</DataType>
     </column>
-    <column id="10" parent="5" name="TOTAL_COST">
+    <column id="12" parent="5" name="PRICE">
       <Position>3</Position>
-      <DataType>DECIMAL(255)|3s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>DECIMAL(15,2)|3s</DataType>
     </column>
-    <column id="11" parent="5" name="BUYING_DATE">
+    <column id="13" parent="5" name="NUMBER">
       <Position>4</Position>
-      <DataType>VARCHAR(20)|12s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>DECIMAL(10)|3s</DataType>
     </column>
-    <column id="12" parent="6" name="ID">
-      <Position>1</Position>
-      <DataType>DECIMAL(20)|3s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <DefaultExpression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_78E694CE_FFE4_4F49_92DA_335220D96D93)</DefaultExpression>
-    </column>
-    <column id="13" parent="6" name="LOGIN">
-      <Position>2</Position>
-      <DataType>VARCHAR(10)|12s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="14" parent="6" name="FIRST_NAME">
-      <Position>3</Position>
-      <DataType>VARCHAR(15)|12s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="15" parent="6" name="LAST_NAME">
-      <Position>4</Position>
-      <DataType>VARCHAR(20)|12s</DataType>
-    </column>
-    <column id="16" parent="6" name="MIDDLE_NAME">
-      <Position>5</Position>
-      <DataType>VARCHAR(15)|12s</DataType>
-    </column>
-    <column id="17" parent="6" name="PASSWORD">
-      <Position>6</Position>
-      <DataType>VARCHAR(20)|12s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="18" parent="6" name="ADDRESS">
-      <Position>7</Position>
-      <DataType>VARCHAR(45)|12s</DataType>
-    </column>
-    <column id="19" parent="6" name="PHONE_NUMBER">
-      <Position>8</Position>
-      <DataType>VARCHAR(11)|12s</DataType>
-    </column>
-    <column id="20" parent="6" name="EMAIL">
-      <Position>9</Position>
-      <DataType>VARCHAR(20)|12s</DataType>
-    </column>
-    <column id="21" parent="6" name="BALANCE">
-      <Position>10</Position>
-      <DataType>DECIMAL(10,2)|3s</DataType>
-    </column>
-    <column id="22" parent="6" name="DISCOUNT">
-      <Position>11</Position>
-      <DataType>TINYINT(3)|-6s</DataType>
-    </column>
-    <index id="23" parent="6" name="PRIMARY_KEY_2">
+    <index id="14" parent="5" name="PRIMARY_KEY_F">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
+      <ColNames>ID_FLOWER</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="24" parent="6" name="CONSTRAINT_INDEX_2">
+    <index id="15" parent="5" name="CONSTRAINT_INDEX_F">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>LOGIN
-PHONE_NUMBER</ColNames>
+      <ColNames>NAME_FLOWER</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="25" parent="6" name="CONSTRAINT_2">
+    <key id="16" parent="5" name="CONSTRAINT_F">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
+      <ColNames>ID_FLOWER</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="26" parent="6" name="CONSTRAINT_INDEX_2">
+    <key id="17" parent="5" name="CONSTRAINT_INDEX_F">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>LOGIN
-PHONE_NUMBER</ColNames>
+      <ColNames>NAME_FLOWER</ColNames>
     </key>
-    <column id="27" parent="7" name="installed_rank">
+    <column id="18" parent="6" name="ID_ORDER">
+      <Position>1</Position>
+      <DataType>DECIMAL(10)|3s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="6" name="ID_FLOWER">
+      <Position>2</Position>
+      <DataType>DECIMAL(10)|3s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="6" name="QUANTITY">
+      <Position>3</Position>
+      <DataType>DECIMAL(3)|3s</DataType>
+    </column>
+    <index id="21" parent="6" name="PRIMARY_KEY_4F">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_ORDER
+ID_FLOWER</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="22" parent="6" name="CONSTRAINT_INDEX_4F">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_FLOWER</ColNames>
+    </index>
+    <key id="23" parent="6" name="CONSTRAINT_4F">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_ORDER
+ID_FLOWER</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="24" parent="6" name="CONSTRAINT_4F05">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_ORDER</ColNames>
+      <RefTableName>ORDERS</RefTableName>
+      <RefKeyName>CONSTRAINT_8</RefKeyName>
+      <RefColNames>ID_ORDER</RefColNames>
+    </foreign-key>
+    <foreign-key id="25" parent="6" name="CONSTRAINT_4F0">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_FLOWER</ColNames>
+      <RefTableName>FLOWERS</RefTableName>
+      <RefKeyName>CONSTRAINT_F</RefKeyName>
+      <RefColNames>ID_FLOWER</RefColNames>
+    </foreign-key>
+    <column id="26" parent="7" name="ID_ORDER">
+      <Position>1</Position>
+      <DataType>DECIMAL(10)|3s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="7" name="ID_USER">
+      <Position>2</Position>
+      <DataType>DECIMAL(10)|3s</DataType>
+    </column>
+    <column id="28" parent="7" name="TOTAL_PRICE">
+      <Position>3</Position>
+      <DataType>DECIMAL(15,2)|3s</DataType>
+    </column>
+    <column id="29" parent="7" name="STATUS">
+      <Position>4</Position>
+      <DataType>VARCHAR|12s</DataType>
+      <DefaultExpression>&apos;CREATED&apos;</DefaultExpression>
+    </column>
+    <column id="30" parent="7" name="DATE_CREATE">
+      <Position>5</Position>
+      <DataType>TIMESTAMP(23,10)|93s</DataType>
+    </column>
+    <column id="31" parent="7" name="DATE_CLOSE">
+      <Position>6</Position>
+      <DataType>TIMESTAMP(23,10)|93s</DataType>
+    </column>
+    <index id="32" parent="7" name="PRIMARY_KEY_8">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_ORDER</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="33" parent="7" name="CONSTRAINT_INDEX_8">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_USER</ColNames>
+    </index>
+    <key id="34" parent="7" name="CONSTRAINT_8">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_ORDER</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="7" name="CONSTRAINT_8B">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_USER</ColNames>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>CONSTRAINT_4</RefKeyName>
+      <RefColNames>ID_USER</RefColNames>
+    </foreign-key>
+    <column id="36" parent="8" name="ROLE">
+      <Position>1</Position>
+      <DataType>VARCHAR|12s</DataType>
+      <DefaultExpression>&apos;USER&apos;</DefaultExpression>
+    </column>
+    <column id="37" parent="8" name="ID_USER">
+      <Position>2</Position>
+      <DataType>DECIMAL(10)|3s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="8" name="LOGIN">
+      <Position>3</Position>
+      <DataType>VARCHAR(100)|12s</DataType>
+    </column>
+    <column id="39" parent="8" name="PASSWORD">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12s</DataType>
+    </column>
+    <column id="40" parent="8" name="ADDRESS">
+      <Position>5</Position>
+      <DataType>VARCHAR(100)|12s</DataType>
+    </column>
+    <column id="41" parent="8" name="PHONENUMBER">
+      <Position>6</Position>
+      <DataType>VARCHAR(11)|12s</DataType>
+    </column>
+    <column id="42" parent="8" name="LAST_NAME">
+      <Position>7</Position>
+      <DataType>VARCHAR(30)|12s</DataType>
+    </column>
+    <column id="43" parent="8" name="FIRST_NAME">
+      <Position>8</Position>
+      <DataType>VARCHAR(30)|12s</DataType>
+    </column>
+    <column id="44" parent="8" name="MIDDLE_NAME">
+      <Position>9</Position>
+      <DataType>VARCHAR(30)|12s</DataType>
+    </column>
+    <column id="45" parent="8" name="BALANCE">
+      <Position>10</Position>
+      <DataType>DECIMAL(15,2)|3s</DataType>
+    </column>
+    <column id="46" parent="8" name="DISCOUNT">
+      <Position>11</Position>
+      <DataType>DECIMAL(3)|3s</DataType>
+    </column>
+    <index id="47" parent="8" name="PRIMARY_KEY_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_USER</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="48" parent="8" name="CONSTRAINT_INDEX_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>LOGIN</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="49" parent="8" name="CONSTRAINT_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_USER</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="50" parent="8" name="CONSTRAINT_INDEX_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>LOGIN</ColNames>
+    </key>
+    <column id="51" parent="9" name="installed_rank">
       <Position>1</Position>
       <DataType>INTEGER(10)|4s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="7" name="version">
+    <column id="52" parent="9" name="version">
       <Position>2</Position>
       <DataType>VARCHAR(50)|12s</DataType>
     </column>
-    <column id="29" parent="7" name="description">
+    <column id="53" parent="9" name="description">
       <Position>3</Position>
       <DataType>VARCHAR(200)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="30" parent="7" name="type">
+    <column id="54" parent="9" name="type">
       <Position>4</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="31" parent="7" name="script">
+    <column id="55" parent="9" name="script">
       <Position>5</Position>
       <DataType>VARCHAR(1000)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="32" parent="7" name="checksum">
+    <column id="56" parent="9" name="checksum">
       <Position>6</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="33" parent="7" name="installed_by">
+    <column id="57" parent="9" name="installed_by">
       <Position>7</Position>
       <DataType>VARCHAR(100)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="7" name="installed_on">
+    <column id="58" parent="9" name="installed_on">
       <Position>8</Position>
       <DataType>TIMESTAMP(23,10)|93s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP()</DefaultExpression>
     </column>
-    <column id="35" parent="7" name="execution_time">
+    <column id="59" parent="9" name="execution_time">
       <Position>9</Position>
       <DataType>INTEGER(10)|4s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="36" parent="7" name="success">
+    <column id="60" parent="9" name="success">
       <Position>10</Position>
       <DataType>BOOLEAN|16s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="37" parent="7" name="PRIMARY_KEY_6">
+    <index id="61" parent="9" name="PRIMARY_KEY_6">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>installed_rank</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="38" parent="7" name="flyway_schema_history_s_idx">
+    <index id="62" parent="9" name="flyway_schema_history_s_idx">
       <ColNames>success</ColNames>
     </index>
-    <key id="39" parent="7" name="flyway_schema_history_pk">
+    <key id="63" parent="9" name="flyway_schema_history_pk">
       <ColNames>installed_rank</ColNames>
       <Primary>1</Primary>
     </key>

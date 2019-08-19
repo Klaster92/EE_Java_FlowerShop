@@ -1,7 +1,6 @@
 package com.accenture.flowershop.fe.dto;
 
 import com.accenture.flowershop.fe.enums.UserType;
-import sun.security.util.Password;
 import java.math.BigDecimal;
 
 public class UserDto {
@@ -12,7 +11,7 @@ public class UserDto {
     private String middleName;
     private String email;
     private String login;
-    private Password password;
+    private String password;
     private String address;
     private String phoneNumber;
     private BigDecimal balance;
@@ -74,11 +73,11 @@ public class UserDto {
         this.login = login;
     }
 
-    public Password getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
