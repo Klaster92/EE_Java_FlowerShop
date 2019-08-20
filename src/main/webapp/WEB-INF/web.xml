@@ -28,6 +28,87 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
+  <servlet>
+    <servlet-name>AddToBascket</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.AddToBascket</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CloseOrderServlet</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.CloseOrderServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CreateOrder</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.CreateOrder</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.LogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>MainPageServlet</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.MainPageServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>PayOrder</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.PayOrder</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>RemoveFromBascket</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.RemoveFromBascket</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SearchFlower</servlet-name>
+    <servlet-class>com.accenture.flowershop.fe.Servlets.SearchFlower</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>SearchFlower</servlet-name>
+    <url-pattern>/SearchFlower</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RemoveFromBascket</servlet-name>
+    <url-pattern>/RemoveFromBascket</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>PayOrder</servlet-name>
+    <url-pattern>/PayOrder</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>MainPageServlet</servlet-name>
+    <url-pattern>/MainPageServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CreateOrder</servlet-name>
+    <url-pattern>/CreateOrder</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CloseOrderServlet</servlet-name>
+    <url-pattern>/CloseOrderServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AddToBascket</servlet-name>
+    <url-pattern>/AddToBascket</url-pattern>
+  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>CXFServlet</servlet-name>
     <url-pattern>/ws/*</url-pattern>
