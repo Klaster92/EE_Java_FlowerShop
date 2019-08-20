@@ -65,7 +65,7 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 <!---->
-    <context:property-placeholder location = "classpath:config"/>
+    <context:property-placeholder location = "classpath:config/conf.properties"/>
 
     <bean id="mapper" class="org.dozer.DozerBeanMapper"/>
 
@@ -74,7 +74,7 @@
     </bean>
 
     <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
-        <property name="mappingLocation" value="classpath:config" />
+        <property name="mappingLocation" value="classpath:config/mapping.xml" />
     </bean>
 
     <bean id="Marshalling" class="com.accenture.flowershop.be.BusinessService.Utils.Marshalling">
@@ -82,7 +82,7 @@
         <property name="unmarshaller" ref="castorMarshaller"/>
     </bean>
 
-    <bean id="FlowersStockWebService" class="fe.webservice.FlowersStockWebServiceImpl" />
+    <bean id="FlowersStockWebService" class="com.accenture.flowershop.fe.ws.FlowersStockWebServiceImpl" />
 
     <jaxws:endpoint id="FlowersStockWebService1" implementor="#FlowersStockWebService"
                     address="/FlowersStockWebService"/>

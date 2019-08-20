@@ -20,7 +20,7 @@ public class OrderPos {
 
     private Flower flower;
 
-    @Column(name = "number")
+    @Column(name = "quantity")
     private Long number;
 
     public OrderPos() {

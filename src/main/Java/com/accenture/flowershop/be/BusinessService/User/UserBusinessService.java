@@ -13,6 +13,8 @@ public interface UserBusinessService {
 
     User userRegistration(User user);
 
+    Boolean checkLogin(String login);
+
     User updateBalance(String login, BigDecimal balance);
 
     void deleteUser(User user);
@@ -25,4 +27,6 @@ public interface UserBusinessService {
 
     @Transactional(rollbackFor = ServiceException.class)
     void updateDiscount(Long idUser, Integer newDiscount) throws ServiceException;
+
+    void pay(Long idUser, BigDecimal priceOrder) throws ServiceException;
 }

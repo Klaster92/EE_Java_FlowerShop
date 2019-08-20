@@ -12,7 +12,7 @@ import java.util.List;
 
 @XmlRootElement
 @Entity(name = "User")
-@Table(name = "USER")
+@Table(name = "USERS")
 public class User {
 
     @Id
@@ -42,8 +42,8 @@ public class User {
     @Column(name = "MIDDLE_NAME")
     private String middleName;
 
-    @XmlElement(name = "PHONE_NUMBER")
-    @Column(name = "PHONE_NUMBER")
+    @XmlElement(name = "PHONENUMBER")
+    @Column(name = "PHONENUMBER")
     private String phoneNumber;
 
     @XmlElement(name = "ADRESS")
@@ -61,10 +61,6 @@ public class User {
     @XmlElement(name = "DISCOUNT")
     @Column(name = "DISCOUNT")
     private int discount = 3;
-
-    @XmlElement(name = "EMAIL")
-    @Column(name = "EMAIL",unique = true)
-    private String email;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
@@ -119,14 +115,6 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -143,7 +131,7 @@ public class User {
         this.balance = balance;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

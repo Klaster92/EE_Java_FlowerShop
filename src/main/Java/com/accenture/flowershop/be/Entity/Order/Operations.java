@@ -9,10 +9,10 @@ import java.io.Serializable;
 public class Operations implements Serializable {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_order")
+    @JoinColumn(name = "ID_ORDER")
     private Order order;
     @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_flower")
+    @JoinColumn(name = "ID_FLOWER")
     private Flower flower;
 
     public Operations() {}

@@ -2,6 +2,7 @@ package com.accenture.flowershop.be.BusinessService.User;
 
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.be.DAO.User.UserDAO;
+import com.accenture.flowershop.be.DAO.repositories.UserRepository;
 import com.accenture.flowershop.be.Entity.User.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,9 @@ import java.math.BigDecimal;
 
 @Service
 public class UserBusinessServiceImpl implements UserBusinessService {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserDAO userDAO;
@@ -46,6 +50,11 @@ public class UserBusinessServiceImpl implements UserBusinessService {
         }
         log.debug("Registration invalid");
         return null;
+    }
+
+    @Override
+    public Boolean checkLogin(String login) {
+        return userRepository.getUserByLogin(login).isPresent();
     }
 
     @Override
@@ -86,5 +95,17 @@ public class UserBusinessServiceImpl implements UserBusinessService {
         }
         User user = getUserById(idUser);
         user.setDiscount(newDiscount);
+    }
+
+    @Override
+    public void pay(Long idUser, BigDecimal priceOrder) throws ServiceException {
+
+        BigDecimal balance;
+        User user = getUserById(idUser);
+        if ((balance = user.getBalance().subtract(priceOrder)).compareTo(BigDecimal.ZERO) != -1) {
+            user.setBalance(balance);
+        } else {
+            throw new ServiceException(ServiceException.ERROR_USER_BALANCE);
+        }
     }
 }

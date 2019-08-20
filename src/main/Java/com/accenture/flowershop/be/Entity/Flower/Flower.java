@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity(name = "Flower")
-@Table(name = "FLOWER")
+@Table(name = "FLOWERS")
 public class Flower {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", updatable = false, unique = true)
+    @Column(name = "ID_FLOWER", updatable = false, unique = true)
     private Long id;
 
-    @Column(name = "FLOWER_NAME",updatable = false, unique = true)
+    @Column(name = "NAME_FLOWER",updatable = false, unique = true)
     private String flower_name;
 
     @Column(name = "PRICE")
