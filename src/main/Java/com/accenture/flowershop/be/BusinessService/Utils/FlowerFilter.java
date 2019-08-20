@@ -9,25 +9,8 @@ public class FlowerFilter {
     public FlowerFilter() {
     }
 
-    public FlowerFilter(String minPrice, String maxPrice, String name) {
-
-        if (minPrice.isEmpty()) {
-            this.minPrice = "0";
-        } else {
-            this.minPrice = minPrice;
-        }
-        if (maxPrice.isEmpty()) {
-            this.maxPrice = "10000";
-        } else {
-            this.maxPrice = maxPrice;
-        }
+    public FlowerFilter(String name) {
         this.name = name;
-    }
-
-
-    public String toString() {
-        String criteria = "";
-        return "f.price between :minprice and :maxprice and f.nameFlower like CONCAT('%',:name,'%')";
     }
 
     public String getMinPrice() {

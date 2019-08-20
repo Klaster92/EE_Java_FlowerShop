@@ -10,7 +10,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
-import java.util.Optional;
 
 @Transactional
 @Repository
@@ -23,6 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findUserByLogin(String login) {
+        log.debug("findUserByLogin");
         try {
             TypedQuery<User> query =
                     em.createQuery("select e from User e where e.login =:LOGIN" , User.class);
@@ -36,41 +36,44 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getUserList() {
-        try {
+        log.debug("getUserList");
+        TypedQuery<User> query;
+        query = em.createQuery("SELECT e from User e", User.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        log.debug("getUserById");
+        try{
             TypedQuery<User> query;
-            query = em.createQuery("SELECT e from User e", User.class);
-            return query.getResultList();
-        } catch (NoResultException e) {
+            query = em.createQuery("select e from User where e.id_user =:id", User.class);
+            return query.getSingleResult();
+        }catch (NoResultException e) {
             return null;
         }
     }
 
     @Override
-    public Optional<User> getUserById(Long id) {
-        try {
-            return Optional.of(em.find(User.class, id));
-        } catch (NoResultException e) {
-            return Optional.empty();
-        }
-    }
-
-    @Override
     public User addUser(User user) {
-            em.persist(user);
-            em.flush();
-            return user;
+        log.debug("addUser");
+        em.persist(user);
+        em.flush();
+        return user;
     }
 
     @Override
     public void deleteUser(User user) {
-            em.remove(user);
-            em.flush();
+        log.debug("deleteUser");
+        em.remove(user);
+        em.flush();
     }
 
     @Override
     public User updateUser(User user) {
-            em.merge(user);
-            em.flush();
-            return user;
+        log.debug("updateUser");
+        em.merge(user);
+        em.flush();
+        return user;
     }
 }

@@ -42,7 +42,6 @@ public class RegistrationServlet extends HttpServlet {
         user.setMiddleName(request.getParameter("MiddleName"));
         user.setPassword(request.getParameter("Password"));
         user.setAddress(request.getParameter("Address"));
-        user.setEmail(request.getParameter("Email"));
         user.setPhoneNumber(request.getParameter("PhoneNumber"));
         if (userBusinessService.userRegistration(user) != null) {
             request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request, response);

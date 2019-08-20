@@ -16,5 +16,3 @@ create table USERS(
                       unique(login)
 );
 ALTER TABLE USERS ALTER COLUMN ROLE SET DEFAULT 'USER';
-
-insert into "USERS"(id_user, role, login, password, address, balance, discount) values (USER_SEQ.nextval, 'ADMIN','admin', 'admin', 'rtyu@mail.ru', 99999, 25);

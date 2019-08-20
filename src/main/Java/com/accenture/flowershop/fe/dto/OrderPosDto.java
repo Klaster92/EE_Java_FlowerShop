@@ -50,4 +50,6 @@ public class OrderPosDto {
         this.price = price;
     }
 
+    public void computePrice(){}//написать
+
 }

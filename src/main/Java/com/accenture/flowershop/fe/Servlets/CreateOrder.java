@@ -46,11 +46,9 @@ public class CreateOrder extends HttpServlet {
             orderBusinessService.addOrder(mapper.map(orderDto, Order.class));
             session.removeAttribute(SessionAttribute.BASKET.toString());
             req.setAttribute("order_msg", "Order is created");
-        }
-        catch(ServiceException e) {
+        } catch (ServiceException e) {
             req.setAttribute("bskt_err", e.getMessage());
-        }
-        finally{
+        } finally {
             req.getRequestDispatcher("/service/mainpage").forward(req, resp);
         }
     }

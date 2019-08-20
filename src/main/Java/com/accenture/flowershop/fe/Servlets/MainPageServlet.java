@@ -63,8 +63,8 @@ public class MainPageServlet extends HttpServlet {
                 session.setAttribute(SessionAttribute.BASKET.toString(), basket);
             }
 
-            List<OrderDto> ordersDto = mapper.mapList(orderBusinessService.getAllOrders(mapper.map(userDto, User.class)), OrderDto.class);
-            req.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
+            //List<OrderDto> ordersDto = mapper.mapList(orderBusinessService.getAllOrders(mapper.map(userDto, User.class)), OrderDto.class);
+            //req.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
 
             FlowerFilter filter = (FlowerFilter) req.getAttribute(SessionAttribute.FILTER.toString());
             List<FlowerDto> flowersDto;

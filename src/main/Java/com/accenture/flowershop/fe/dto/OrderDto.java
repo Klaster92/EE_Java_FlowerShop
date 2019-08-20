@@ -84,4 +84,5 @@ public class OrderDto {
         this.dateClose = dateClose;
     }
 
+    public void computePrice(){}
 }

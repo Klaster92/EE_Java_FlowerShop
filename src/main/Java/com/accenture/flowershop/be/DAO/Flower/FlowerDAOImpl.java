@@ -37,19 +37,15 @@ public class FlowerDAOImpl implements FlowerDAO {
 
     @Override
     public List<Flower> getFlowerList() {
-        try {
-            log.debug("getting flowers list");
-            TypedQuery<Flower> query;
-            query = em.createQuery("select e from Flower e", Flower.class);
-            return query.getResultList();
-        } catch (NoResultException e) {
-         return null;
-        }
+        log.debug("getting flowers list");
+        TypedQuery<Flower> query;
+        query = em.createQuery("select e from Flower e", Flower.class);
+        return query.getResultList();
     }
 
     @Override
     public Flower addFlower(Flower flower) {
-            log.debug("saving flower");
+            log.debug("add flower");
             em.persist(flower);
             em.flush();
             return  flower;
@@ -59,7 +55,7 @@ public class FlowerDAOImpl implements FlowerDAO {
 
     @Override
     public void deleteFlower(Flower flower) {
-        log.debug("deleting flower");
+        log.debug("delete flower");
         em.remove(flower);
         em.flush();
     }
@@ -73,10 +69,8 @@ public class FlowerDAOImpl implements FlowerDAO {
 
     @Override
     public List<Flower> searchFilter (FlowerFilter filter) {
-        String temp = filter.toString();
-        TypedQuery<Flower> q = em.createQuery("select f from Flower f where " + temp, Flower.class);
-        q.setParameter("minprice", new BigDecimal(filter.getMinPrice()));
-        q.setParameter("maxprice", new BigDecimal(filter.getMaxPrice()));
+        log.debug("searchFilter");
+        TypedQuery<Flower> q = em.createQuery("select f from Flower f where f.price between :minprice and :maxprice and f.nameFlower like CONCAT('%',:name,'%')", Flower.class);
         q.setParameter("name", filter.getName());
         return q.getResultList();
 
