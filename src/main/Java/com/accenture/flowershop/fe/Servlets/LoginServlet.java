@@ -41,24 +41,23 @@ public class LoginServlet extends HttpServlet {
 
         if (request.getParameter("login") != null) {
 
-            //ServletConfig config = getServletConfig();
             String login = request.getParameter("login");
             String password = request.getParameter("password");
             try {
 
                 if (userBusinessService.userVerification(login, password) != null) {
 
-                    request.getRequestDispatcher("/MainPageServlet").forward(request, response);
+                    response.sendRedirect("/MainPageServlet");
 
                 } else {
-                    request.getRequestDispatcher("/WEB-INF/lib/WrongData");
+                    request.getRequestDispatcher("/LoginServlet");
                 }
             } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
             }
         }
         if (request.getParameter("To registration") != null) {
-            request.getRequestDispatcher("/WEB-INF/lib/RegistrationPage.jsp").forward(request, response);
+            request.getRequestDispatcher("/RegistrationServlet").forward(request, response);
         }
     }
 }

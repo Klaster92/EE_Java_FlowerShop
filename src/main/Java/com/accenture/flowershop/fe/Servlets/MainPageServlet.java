@@ -78,13 +78,18 @@ public class MainPageServlet extends HttpServlet {
             req.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
 
             if (userDto.getRole() == UserType.USER) {
-                req.getRequestDispatcher("/mainPage.jsp").forward(req, resp);
+                req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
             } else {
-                req.getRequestDispatcher("/adminMainPage.jsp").forward(req, resp);
+                req.getRequestDispatcher("/WEB-INF/lib/AdminMainPage.jsp").forward(req, resp);
             }
         } catch (ServiceException e) {
             req.setAttribute("err", e.getMessage());
         }
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/MainPageServlet").forward(request, response);
     }
 }
 

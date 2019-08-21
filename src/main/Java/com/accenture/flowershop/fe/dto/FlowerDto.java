@@ -15,7 +15,7 @@ public class FlowerDto {
         this.price = new BigDecimal(0);
     }
 
-    @Mapping("id")
+    //@Mapping("id")
     public Long getIdFlower() {
         return idFlower;
     }
