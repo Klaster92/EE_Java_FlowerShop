@@ -6,6 +6,7 @@ import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -18,7 +19,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Iterator;
 
-@WebServlet(urlPatterns = "/service/removeFromBasket")
+@Service
+@WebServlet
 public class RemoveFromBascket extends HttpServlet {
 
     @Autowired

@@ -3,6 +3,7 @@ package com.accenture.flowershop.be.BusinessService.Order;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.be.Entity.Order.Order;
 import com.accenture.flowershop.be.Entity.User.User;
+import com.accenture.flowershop.fe.dto.OrderPosDto;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface OrderBusinessService  {
 
     Order saveOrder(Order order);
 
-    List<Order> getAllOrders();
+    List<Order> getAllOrders(User user);
 
     void completeOrder(Long id);
 
@@ -28,4 +29,6 @@ public interface OrderBusinessService  {
 
     @Transactional(rollbackFor = ServiceException.class)
     void closeOrder(Long idOrder) throws ServiceException;
+
+    void computePrice(OrderPosDto order);
 }

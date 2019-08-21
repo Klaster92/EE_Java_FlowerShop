@@ -3,6 +3,7 @@ package com.accenture.flowershop.be.BusinessService.Utils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.Unmarshaller;
+import org.springframework.stereotype.Service;
 
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -10,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
 
+@Service
 public class Marshalling {
 
     private Marshaller marshaller;

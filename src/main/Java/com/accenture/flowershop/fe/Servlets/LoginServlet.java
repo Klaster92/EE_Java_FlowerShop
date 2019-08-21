@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Service
-@WebServlet(urlPatterns = "/Login")
+@WebServlet
 public class LoginServlet extends HttpServlet {
 
     @Autowired
@@ -48,14 +48,7 @@ public class LoginServlet extends HttpServlet {
 
                 if (userBusinessService.userVerification(login, password) != null) {
 
-                    /*HttpSession session = request.getSession();
-                    session.setAttribute("user",userBusinessService.findUserByLogin(login));
-                    session.setMaxInactiveInterval(30*60);
-
-                    Cookie loginCookie = new Cookie("user","someTry");
-                    loginCookie.setMaxAge(30*60);
-                    response.addCookie(loginCookie);*/
-                    response.sendRedirect("/WEB-INF/lib/MainPage.jsp");
+                    request.getRequestDispatcher("/MainPageServlet").forward(request, response);
 
                 } else {
                     request.getRequestDispatcher("/WEB-INF/lib/WrongData");

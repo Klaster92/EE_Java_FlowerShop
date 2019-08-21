@@ -35,7 +35,7 @@ public class UserBusinessServiceImpl implements UserBusinessService {
 
     @Override
     public User userRegistration(User user) {
-        if(StringUtils.containsWhitespace(user.getLogin()) && !StringUtils.containsWhitespace(user.getPassword())) {
+        if(StringUtils.containsWhitespace(user.getLogin()) && StringUtils.containsWhitespace(user.getPassword())) {
             log.debug("Registration invalid");
             return null;
         }

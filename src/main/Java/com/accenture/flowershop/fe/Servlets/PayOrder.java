@@ -6,6 +6,7 @@ import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.fe.dto.UserDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -17,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/service/payorder")
+@Service
+@WebServlet
 public class PayOrder extends HttpServlet {
 
     @Autowired

@@ -17,7 +17,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @SequenceGenerator(name = "generator", sequenceName = "USER_SEQ", allocationSize = 50, initialValue = 2)
+    @Column(name = "ID_USER")
     @XmlElement(name = "id")
     private Long id;
 
@@ -28,7 +29,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "ROLE")
     @XmlElement(name = "role")
-    private UserType role;
+    private UserType role = UserType.USER;
 
     @XmlElement(name = "FIRST_NAME")
     @Column(name = "FIRST_NAME")

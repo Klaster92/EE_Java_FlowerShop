@@ -7,7 +7,9 @@ import com.accenture.flowershop.be.Entity.Flower.Flower;
 import com.accenture.flowershop.be.Entity.Order.Order;
 import com.accenture.flowershop.be.Entity.Order.OrderPos;
 import com.accenture.flowershop.be.Entity.User.User;
+import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.enums.OrderStatus;
+import com.accenture.flowershop.fe.enums.UserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +51,11 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     } // дописать, не факт, что понадобится
 
     @Override
-    public List<Order> getAllOrders() {
+    public List<Order> getAllOrders(User user) {
         log.debug("getAllOrders");
+        if(user.getRole() == UserType.USER) {
+            return orderDAO.getAllMyOrders(user.getId());
+        }
         return orderDAO.findAllOrders() ;
     }
 
@@ -116,8 +121,11 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
         }
     }
 
-    public void computePrice(){
+    @Override
+    public void computePrice(OrderPosDto order){
         log.debug("computeOrder");
+        BigDecimal price = order.getFlower().getPrice().multiply(new BigDecimal(order.getNumber()));
+        order.setPrice(price.setScale(2, RoundingMode.HALF_DOWN));
     }
 }
 

@@ -1,6 +1,7 @@
 package com.accenture.flowershop.fe.Servlets;
 
 import com.accenture.flowershop.be.BusinessService.Flower.FlowerBusinessService;
+import com.accenture.flowershop.be.BusinessService.Order.OrderBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.fe.dto.FlowerDto;
 import com.accenture.flowershop.fe.dto.OrderDto;
@@ -8,6 +9,7 @@ import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -19,11 +21,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/service/addToBasket")
+@Service
+@WebServlet
 public class AddToBascket extends HttpServlet {
 
     @Autowired
+    OrderBusinessService orderBusinessService;
+
+    @Autowired
     Mapper mapper;
+
     @Autowired
     private FlowerBusinessService flowerBusinessService;
 
@@ -50,13 +57,13 @@ public class AddToBascket extends HttpServlet {
             orderDto.computePrice();
 
             session.setAttribute(SessionAttribute.BASKET.toString(), orderDto);
-            req.setAttribute("bskt_msg", "Item is added.");
+            req.setAttribute("bascket_msg", "Item is added.");
 
         }catch (NumberFormatException e){
-            req.setAttribute("ctlg_err", ServiceException.ERROR_INVALIDATE_DATA);
+            req.setAttribute("catalog_err", ServiceException.ERROR_INVALIDATE_DATA);
         }
         catch (ServiceException e) {
-            req.setAttribute("ctlg_err", e.getMessage());
+            req.setAttribute("catalog_err", e.getMessage());
         } finally {
             req.getRequestDispatcher("/service/mainpage").forward(req, resp);
         }
@@ -78,7 +85,7 @@ public class AddToBascket extends HttpServlet {
                 }
                 orderPositionDto.setOrder(orderDto);
                 orderPositionDto.setNumber(sumQty);
-                orderPositionDto.computePrice();
+                orderBusinessService.computePrice(orderPositionDto);
                 return orderDto;
             }
         }

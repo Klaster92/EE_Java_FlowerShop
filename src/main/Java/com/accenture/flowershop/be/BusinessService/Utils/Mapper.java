@@ -8,10 +8,12 @@ import com.accenture.flowershop.fe.dto.FlowerDto;
 import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.dto.UserDto;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class Mapper {
 
     public static UserDto map(User user) {

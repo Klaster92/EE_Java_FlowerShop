@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="flowerShopDs" uuid="4dbcda50-97e9-43b3-a38a-81332d809246">
+    <data-source source="LOCAL" name="db" uuid="3ac6d3c8-720c-4201-8187-9d922b35e1ba">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:$PROJECT_DIR$/src/main/resouces/flowerShopDs</jdbc-url>
+      <jdbc-url>jdbc:h2:C:\Users\aleksandr.serykh\Desktop\EE_SanyaSerykh\src\main\resouces\db</jdbc-url>
     </data-source>
   </component>
 </project>

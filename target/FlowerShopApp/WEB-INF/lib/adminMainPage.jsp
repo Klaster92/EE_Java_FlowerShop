@@ -22,12 +22,12 @@
     <p>Role: ${USER.role} </p>
 </form>
 
-<form method = "get" action = "/flowershop/user/logout">
+<form method = "get" action = "/LogoutServlet">
     <button type = "submit"> Logout </button>
 </form>
 
 <h2>ALL ORDERS</h2>
-<form method="post" action="/flowershop/admin/closeorder">
+<form method="post" action="/CloseOrderServlet">
     <div>
         <table>
             <tr>

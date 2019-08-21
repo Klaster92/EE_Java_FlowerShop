@@ -13,6 +13,7 @@ import com.accenture.flowershop.fe.dto.UserDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import com.accenture.flowershop.fe.enums.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -25,7 +26,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/service/mainpage")
+@Service
+@WebServlet
 public class MainPageServlet extends HttpServlet {
 
     @Autowired
@@ -63,13 +65,13 @@ public class MainPageServlet extends HttpServlet {
                 session.setAttribute(SessionAttribute.BASKET.toString(), basket);
             }
 
-            //List<OrderDto> ordersDto = mapper.mapList(orderBusinessService.getAllOrders(mapper.map(userDto, User.class)), OrderDto.class);
-            //req.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
+            List<OrderDto> ordersDto = mapper.mapList(orderBusinessService.getAllOrders(mapper.map(userDto, User.class)), OrderDto.class);
+            req.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
 
             FlowerFilter filter = (FlowerFilter) req.getAttribute(SessionAttribute.FILTER.toString());
             List<FlowerDto> flowersDto;
             if (filter == null) {
-                filter = new FlowerFilter("", "", "");
+                filter = new FlowerFilter();
                 req.setAttribute(SessionAttribute.FILTER.toString(), filter);
             }
             flowersDto = mapper.mapList(flowerBusinessService.searchFilter(filter), FlowerDto.class);

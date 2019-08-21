@@ -1,5 +1,8 @@
 package com.accenture.flowershop.be.BusinessService.Utils;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DiscountRequest {
 
     private Long idUser;

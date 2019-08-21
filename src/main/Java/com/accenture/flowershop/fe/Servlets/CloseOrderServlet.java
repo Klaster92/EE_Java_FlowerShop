@@ -3,6 +3,7 @@ package com.accenture.flowershop.fe.Servlets;
 import com.accenture.flowershop.be.BusinessService.Order.OrderBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -14,7 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/admin/closeorder")
+@Service
+@WebServlet
 public class CloseOrderServlet extends HttpServlet {
 
     @Autowired

@@ -18,7 +18,7 @@
 
       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:C:/Users/aleksandr.serykh/Desktop/EE_SanyaSerykh/src/main/resouces/flowerShopDs"/>
+        <property name="url" value="jdbc:h2:C:/Users/aleksandr.serykh/Desktop/EE_SanyaSerykh/src/main/resouces/db"/>
         <property name="username" value="admin"/>
         <property name="password" value=""/>
     </bean>
@@ -73,18 +73,17 @@
         <property name="baseMapper" ref="mapper" />
     </bean>
 
-    <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+    <!--bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocation" value="classpath:config/mapping.xml" />
     </bean>
 
     <bean id="Marshalling" class="com.accenture.flowershop.be.BusinessService.Utils.Marshalling">
         <property name="marshaller" ref="castorMarshaller"/>
         <property name="unmarshaller" ref="castorMarshaller"/>
-    </bean>
+    </bean-->
 
     <bean id="FlowersStockWebService" class="com.accenture.flowershop.fe.ws.FlowersStockWebServiceImpl" />
 
     <jaxws:endpoint id="FlowersStockWebService1" implementor="#FlowersStockWebService"
                     address="/FlowersStockWebService"/>
-    <jpa:repositories base-package="com.accenture.flowershop.be.DAO.repositories"/>
 </beans>

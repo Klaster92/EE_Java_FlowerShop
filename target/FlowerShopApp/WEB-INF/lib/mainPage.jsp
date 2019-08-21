@@ -28,14 +28,14 @@
         </div>
     </form>
 
-    <form method = "get" action = "/flowershop/user/logout">
+    <form method = "get" action = "/LogoutServlet">
         <button type = "submit"> Logout </button>
     </form>
 </div>
 
 
 <div class="row">
-    <form method="post" action="/flowershop/service/search">
+    <form method="post" action="/SearchFlower">
         <h2>CATALOG</h2>
         <h3>Filter for search</h3>
         <div class="panel">
@@ -46,7 +46,7 @@
         </div>
     </form>
 
-    <form method="post" action="/flowershop/service/addToBasket">
+    <form method="post" action="/AddToBascket">
         <div class="row catalog">
             <table>
                 <tbody>
@@ -92,7 +92,7 @@
 </div>
 
 <div class="row">
-    <form method="post" action="/flowershop/service/removeFromBasket">
+    <form method="post" action="/RemoveFromBascket">
         <div class="basket">
             <h2>MY BASKET</h2>
             <table>
@@ -127,7 +127,7 @@
         </div>
     </form>
 
-    <form method="post" action="/flowershop/service/createOrder">
+    <form method="post" action="/CreateOrder">
         <div class="panel">
             <c:choose>
                 <c:when test="${BASKET.orderPositions.isEmpty()}">
@@ -145,7 +145,7 @@
 
 <div class="row">
     <h2>MY ORDERS</h2>
-    <form method="post" action="/flowershop/service/payorder">
+    <form method="post" action="/PayOrder">
         <div class="myorders">
             <table>
                 <tr>

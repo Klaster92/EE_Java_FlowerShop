@@ -2,11 +2,13 @@ package com.accenture.flowershop.be.BusinessService.Utils;
 
 import org.dozer.Mapper;
 import org.dozer.MappingException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class MapperService implements org.dozer.Mapper {
 
     private org.dozer.Mapper baseMapper;

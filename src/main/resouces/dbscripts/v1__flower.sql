@@ -1,7 +1,7 @@
 CREATE sequence FLOWER_SEQ;
 
 create table FLOWERS(
-                        id_flower number(10, 0),
+                        id_flower number(10, 0) auto_increment ,
                         name_flower varchar2(30),
                         price decimal(15,2),
                         number number(10,0),

@@ -4,6 +4,7 @@ import com.accenture.flowershop.fe.dto.UserDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -15,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/user/logout")
+@Service
+@WebServlet
 public class LogoutServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(LogoutServlet.class);

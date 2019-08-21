@@ -6,7 +6,7 @@
     <Resource name="jdbc_empDS" auth="Container"
               type="javax.sql.DataSource"
               driverClassName="org.h2.Driver"
-              url="jdbc:h2:C:/Users/aleksandr.serykh/Desktop/EE_SanyaSerykh/src/main/resouces/flowerShopDs"
+              url="jdbc:h2:C:/Users/aleksandr.serykh/Desktop/EE_SanyaSerykh/src/main/resouces/db"
               username="admin" password=""
               maxActive="10" maxIdle="3"
               initialSize="1"

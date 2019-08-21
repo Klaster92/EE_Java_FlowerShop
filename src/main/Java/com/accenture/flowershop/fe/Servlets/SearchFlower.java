@@ -4,6 +4,7 @@ import com.accenture.flowershop.be.BusinessService.Flower.FlowerBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.FlowerFilter;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -14,7 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/service/search")
+@Service
+@WebServlet
 public class SearchFlower extends HttpServlet {
 
     @Autowired
@@ -34,7 +36,7 @@ public class SearchFlower extends HttpServlet {
         String from = req.getParameter("from");
         String to = req.getParameter("to");
         String name = req.getParameter("name");
-        FlowerFilter filter = new FlowerFilter(from, to, name);
+        FlowerFilter filter = new FlowerFilter();
         req.setAttribute(SessionAttribute.FILTER.toString(), filter);
         req.getRequestDispatcher("/service/mainpage").forward(req, resp);
     }

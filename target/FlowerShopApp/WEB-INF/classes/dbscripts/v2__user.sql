@@ -2,7 +2,7 @@ CREATE sequence USER_SEQ;
 
 create table USERS(
                       role varchar2 check(role in ('ADMIN', 'USER')),
-                      id_user number(10,0),
+                      id_user number(10,0) auto_increment primary key,
                       login varchar2(100),
                       password varchar2(20),
                       address varchar2(100),
@@ -16,3 +16,6 @@ create table USERS(
                       unique(login)
 );
 ALTER TABLE USERS ALTER COLUMN ROLE SET DEFAULT 'USER';
+
+insert into "USERS"(id_user, role, login, password, address, balance, discount) values (USER_SEQ.nextval, 'ADMIN','admin', '1234', 'mypochta@mail.ru', 10000, 30);
+
