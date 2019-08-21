@@ -2,12 +2,12 @@ package com.accenture.flowershop.fe.Servlets;
 
 import com.accenture.flowershop.be.BusinessService.Flower.FlowerBusinessService;
 import com.accenture.flowershop.be.BusinessService.Order.OrderBusinessService;
+import com.accenture.flowershop.be.BusinessService.Utils.Mapper;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.fe.dto.FlowerDto;
 import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
-import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -91,7 +91,7 @@ public class AddToBascket extends HttpServlet {
         }
         /*Если похожей позиции не было, то добавляем её*/
         OrderPosDto newOrderPositionDto = new OrderPosDto(
-                orderDto, mapper.map(flowerBusinessService.getFlowerById(idFlower), FlowerDto.class), quantity);
+                orderDto, mapper.map(flowerBusinessService.getFlowerById(idFlower)), quantity);
         orderDto.getOrderPositions().add(newOrderPositionDto);
 
         return orderDto;

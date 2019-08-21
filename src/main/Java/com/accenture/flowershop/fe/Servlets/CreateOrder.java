@@ -1,9 +1,8 @@
 package com.accenture.flowershop.fe.Servlets;
 
 import com.accenture.flowershop.be.BusinessService.Order.OrderBusinessService;
-import com.accenture.flowershop.be.BusinessService.Utils.MapperService;
+import com.accenture.flowershop.be.BusinessService.Utils.Mapper;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
-import com.accenture.flowershop.be.Entity.Order.Order;
 import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ import java.io.IOException;
 public class CreateOrder extends HttpServlet {
 
     @Autowired
-    MapperService mapper;
+    Mapper mapper;
 
     @Autowired
     private OrderBusinessService orderBusinessService;
@@ -43,7 +42,7 @@ public class CreateOrder extends HttpServlet {
         HttpSession session = req.getSession(false);
         OrderDto orderDto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
         try {
-            orderBusinessService.addOrder(mapper.map(orderDto, Order.class));
+            orderBusinessService.addOrder(mapper.map(orderDto));
             session.removeAttribute(SessionAttribute.BASKET.toString());
             req.setAttribute("order_msg", "Order is created");
         } catch (ServiceException e) {

@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 
                 if (userBusinessService.userVerification(login, password) != null) {
 
-                    response.sendRedirect("/MainPageServlet");
+                    request.getRequestDispatcher("/MainPageServlet").forward(request, response);
 
                 } else {
                     request.getRequestDispatcher("/LoginServlet");

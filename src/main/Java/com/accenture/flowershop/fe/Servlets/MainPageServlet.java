@@ -4,9 +4,8 @@ import com.accenture.flowershop.be.BusinessService.Flower.FlowerBusinessService;
 import com.accenture.flowershop.be.BusinessService.Order.OrderBusinessService;
 import com.accenture.flowershop.be.BusinessService.User.UserBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.FlowerFilter;
-import com.accenture.flowershop.be.BusinessService.Utils.MapperService;
+import com.accenture.flowershop.be.BusinessService.Utils.Mapper;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
-import com.accenture.flowershop.be.Entity.User.User;
 import com.accenture.flowershop.fe.dto.FlowerDto;
 import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.UserDto;
@@ -31,7 +30,7 @@ import java.util.List;
 public class MainPageServlet extends HttpServlet {
 
     @Autowired
-    MapperService mapper;
+    Mapper mapper;
     @Autowired
     private UserBusinessService userBusinessService;
     @Autowired
@@ -48,14 +47,14 @@ public class MainPageServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
+        HttpSession session = request.getSession();
 
         UserDto userDto = (UserDto) session.getAttribute(SessionAttribute.USER.toString());
 
         try {
-            userDto = mapper.map(userBusinessService.getUserById(userDto.getIdUser()), UserDto.class);
+            userDto = mapper.map(userBusinessService.getUserById(userDto.getIdUser()));
 
             session.setAttribute(SessionAttribute.USER.toString(), userDto);
 
@@ -65,25 +64,25 @@ public class MainPageServlet extends HttpServlet {
                 session.setAttribute(SessionAttribute.BASKET.toString(), basket);
             }
 
-            List<OrderDto> ordersDto = mapper.mapList(orderBusinessService.getAllOrders(mapper.map(userDto, User.class)), OrderDto.class);
-            req.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
+            List<OrderDto> ordersDto = mapper.mapOrders(orderBusinessService.getAllOrders(mapper.map(userDto)));
+            request.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
 
-            FlowerFilter filter = (FlowerFilter) req.getAttribute(SessionAttribute.FILTER.toString());
+            FlowerFilter filter = (FlowerFilter) request.getAttribute(SessionAttribute.FILTER.toString());
             List<FlowerDto> flowersDto;
             if (filter == null) {
                 filter = new FlowerFilter();
-                req.setAttribute(SessionAttribute.FILTER.toString(), filter);
+                request.setAttribute(SessionAttribute.FILTER.toString(), filter);
             }
-            flowersDto = mapper.mapList(flowerBusinessService.searchFilter(filter), FlowerDto.class);
-            req.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
+            flowersDto = mapper.mapFlowers(flowerBusinessService.searchFilter(filter));
+            request.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
 
             if (userDto.getRole() == UserType.USER) {
-                req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
+                request.getRequestDispatcher("/MainPageServlet").forward(request, response);
             } else {
-                req.getRequestDispatcher("/WEB-INF/lib/AdminMainPage.jsp").forward(req, resp);
+                request.getRequestDispatcher("/WEB-INF/lib/AdminMainPage.jsp").forward(request, response);
             }
         } catch (ServiceException e) {
-            req.setAttribute("err", e.getMessage());
+            request.setAttribute("err", e.getMessage());
         }
     }
 

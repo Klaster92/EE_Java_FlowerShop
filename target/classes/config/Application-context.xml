@@ -67,11 +67,11 @@
 <!---->
     <context:property-placeholder location = "classpath:config/conf.properties"/>
 
-    <bean id="mapper" class="org.dozer.DozerBeanMapper"/>
+<!--    <bean id="mapper" class="org.dozer.DozerBeanMapper"/>-->
 
-    <bean id="mapperService" class="com.accenture.flowershop.be.BusinessService.Utils.MapperService">
+    <!--bean id="mapperService" class="com.accenture.flowershop.be.BusinessService.Utils.MapperService">
         <property name="baseMapper" ref="mapper" />
-    </bean>
+    </bean-->
 
     <!--bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocation" value="classpath:config/mapping.xml" />

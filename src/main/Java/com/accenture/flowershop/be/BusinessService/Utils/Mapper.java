@@ -9,6 +9,7 @@ import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.dto.UserDto;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.Mapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,6 +162,17 @@ public class Mapper {
                 orderDtoList.add(Mapper.map(order));
             }
             return orderDtoList;
+        }
+        return null;
+    }
+
+    public static List<Order> mapOrderEnList(List<OrderDto> orders) {
+        if (orders != null) {
+            List<Order> orderEntityList = new ArrayList<>();
+            for (OrderDto order : orders) {
+                orderEntityList.add(Mapper.map(order));
+            }
+            return orderEntityList;
         }
         return null;
     }

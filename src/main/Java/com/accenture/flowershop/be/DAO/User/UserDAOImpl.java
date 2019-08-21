@@ -48,6 +48,7 @@ public class UserDAOImpl implements UserDAO {
         try{
             TypedQuery<User> query;
             query = em.createQuery("select e from User where e.id_user =:id", User.class);
+            query.setParameter("id", id);
             return query.getSingleResult();
         }catch (NoResultException e) {
             return null;
