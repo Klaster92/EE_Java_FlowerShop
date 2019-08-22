@@ -1,12 +1,16 @@
 package com.accenture.flowershop.fe.dto;
 
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 public class OrderPosDto {
-
+    @ManyToOne
     private OrderDto order;
+    @ManyToOne
     private FlowerDto flower;
+    @ManyToOne
     private Long number;
+    @ManyToOne
     private BigDecimal price;
 
     public OrderPosDto(){

@@ -5,9 +5,11 @@ import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 public class UserDto {
+
     private Long idUser;
     private UserType role;
     private String name;

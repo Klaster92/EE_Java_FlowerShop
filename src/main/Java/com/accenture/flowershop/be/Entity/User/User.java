@@ -63,7 +63,7 @@ public class User {
     @Column(name = "DISCOUNT")
     private int discount = 3;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     private List<Order> orders;
 
     public User(){}

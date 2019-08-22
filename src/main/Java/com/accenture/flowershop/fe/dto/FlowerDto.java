@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 public class FlowerDto {
-
     private Long idFlower;
     private String nameFlower;
     private BigDecimal price;

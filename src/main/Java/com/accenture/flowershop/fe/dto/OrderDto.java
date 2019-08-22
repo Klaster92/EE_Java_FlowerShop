@@ -5,13 +5,14 @@ import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDto {
 
+public class OrderDto {
     private Long idOrder;
     private UserDto user;
     private List<OrderPosDto> orderPos;
@@ -20,9 +21,9 @@ public class OrderDto {
     private String dateCreate;
     private String dateClose;
 
+
     public OrderDto() {
     }
-
 
     public Long getIdOrder() {
         return idOrder;

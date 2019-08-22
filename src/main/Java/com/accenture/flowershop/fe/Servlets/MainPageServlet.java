@@ -77,7 +77,7 @@ public class MainPageServlet extends HttpServlet {
             request.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
 
             if (userDto.getRole() == UserType.USER) {
-                request.getRequestDispatcher("/MainPageServlet").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/lib/mainPage.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/WEB-INF/lib/AdminMainPage.jsp").forward(request, response);
             }

@@ -48,7 +48,7 @@ public class OrderDAOImpl implements OrderDAO {
         log.debug("findOrder");
         try{
             TypedQuery<Order> query;
-            query = em.createQuery("select e from order e where e.orderId=:ID", Order.class);//id_order
+            query = em.createQuery("select e from Order e where e.id=:ID", Order.class);//id_order //orderID
             return query.setParameter("ID",orderId).getSingleResult();
         } catch (NoResultException e) {
             log.debug("Not find order");
@@ -59,7 +59,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> getAllMyOrders(Long idUser) {
         log.debug("getAllMyOrders");
-        TypedQuery<Order> query = em.createQuery("select o from order o where o.user.id = :id", Order.class);//idUser
+        TypedQuery<Order> query = em.createQuery("select o from Order o where o.user.id = :id", Order.class);//idUser
         query.setParameter("id", idUser);
         return query.getResultList();
     }
@@ -69,7 +69,7 @@ public class OrderDAOImpl implements OrderDAO {
         log.debug("findAllOrders");
         try {
             TypedQuery<Order> query;
-            query = em.createQuery("select e from order e", Order.class);
+            query = em.createQuery("select e from Order e", Order.class);
             return query.getResultList();
         } catch (NoResultException e) {
             return null;

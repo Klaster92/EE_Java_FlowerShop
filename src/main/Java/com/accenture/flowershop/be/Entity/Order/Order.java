@@ -16,7 +16,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cust")
     @SequenceGenerator(name = "cust", sequenceName = "ORDER_SEQ", allocationSize = 1, initialValue = 2)
-    @Column(name = "id_order")
+    @Column(name = "ID_ORDER")
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)

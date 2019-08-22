@@ -8,50 +8,42 @@
   <component name="ChangeListManager">
     <list default="true" id="5d6ff9da-c41a-4f32-ae63-c06892657601" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShopApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShopApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/User/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/User/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Flower/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Flower/Flower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/Operations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/Operations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/OrderPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/Order/OrderPos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/Entity/User/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/MainPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/MainPageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/FlowerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/FlowerDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/OrderPosDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/OrderPosDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resouces/config/Application-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/config/Application-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resouces/config/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resouces/config/persistence.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resouces/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resouces/db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resouces/db.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/adminMainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/adminMainPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mainPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/DAO/User/UserDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/DAO/User/UserDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Flower/Flower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Flower/Flower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Order/Operations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Order/Operations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Order/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Order/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Order/OrderPos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/Order/OrderPos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/User/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/be/Entity/User/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/Servlets/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/Servlets/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/FlowerDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/FlowerDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/Servlets/MainPageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/Servlets/MainPageServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/OrderDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/OrderDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/OrderPosDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/OrderPosDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/com/accenture/flowershop/fe/dto/UserDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/config/Application-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/config/Application-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/config/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/config/persistence.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/classes/db.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/lib/adminMainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/lib/adminMainPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/lib/mainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FlowerShopApp/WEB-INF/lib/mainPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/User/UserDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/DAO/User/UserDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Flower/Flower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Flower/Flower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/Operations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/Operations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/OrderPos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/Order/OrderPos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/User/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/be/Entity/User/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/Servlets/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/Servlets/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/dto/FlowerDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/dto/OrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/Servlets/MainPageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/Servlets/MainPageServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/dto/OrderPosDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/dto/OrderPosDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/accenture/flowershop/fe/dto/UserDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/Application-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/Application-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/persistence.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.trace.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -350,7 +342,8 @@
       <workItem from="1566379107403" duration="9146000" />
       <workItem from="1566396508947" duration="4035000" />
       <workItem from="1566452047729" duration="9932000" />
-      <workItem from="1566462481330" duration="1310000" />
+      <workItem from="1566462481330" duration="2574000" />
+      <workItem from="1566467306276" duration="3163000" />
     </task>
     <servers />
   </component>
@@ -390,14 +383,6 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/LoginServlet.java</url>
-          <line>46</line>
-          <properties class="com.accenture.flowershop.fe.Servlets.LoginServlet" method="doPost">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/User/UserDAOImpl.java</url>
           <line>45</line>
           <properties class="com.accenture.flowershop.be.DAO.User.UserDAOImpl" method="getUserById">
@@ -427,6 +412,11 @@
           <url>file://$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/be/DAO/Order/OrderDAOImpl.java</url>
           <line>61</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Java/com/accenture/flowershop/fe/Servlets/MainPageServlet.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
