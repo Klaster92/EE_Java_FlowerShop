@@ -1,9 +1,13 @@
 package com.accenture.flowershop.fe.Servlets;
 
+import com.accenture.flowershop.be.BusinessService.User.UserBusinessService;
+import com.accenture.flowershop.be.BusinessService.Utils.Mapper;
+import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.fe.dto.UserDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -32,9 +36,10 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
+        HttpSession session = req.getSession();//false
         LOG.info("USER " + ((UserDto) session.getAttribute(SessionAttribute.USER.toString())).getLogin() + " LOGGED OUT");
         session.invalidate();
-        resp.sendRedirect("/flowershop/loginPage.jsp");
+        req.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(req, resp);
+//        resp.sendRedirect("/LoginServlet");
     }
 }

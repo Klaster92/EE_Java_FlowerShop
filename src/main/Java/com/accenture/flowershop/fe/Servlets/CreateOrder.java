@@ -48,7 +48,7 @@ public class CreateOrder extends HttpServlet {
         } catch (ServiceException e) {
             req.setAttribute("bascket_err", e.getMessage());
         } finally {
-            req.getRequestDispatcher("/service/mainpage").forward(req, resp);
+            req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
         }
     }
 }

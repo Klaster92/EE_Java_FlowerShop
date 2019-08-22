@@ -49,6 +49,6 @@ public class PayOrder extends HttpServlet {
         } catch (ServiceException e) {
             req.setAttribute("order_err", e.getMessage());
         }
-        req.getRequestDispatcher("/service/mainpage").forward(req, resp);
+        req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
     }
 }

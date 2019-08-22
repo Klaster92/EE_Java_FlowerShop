@@ -65,7 +65,7 @@ public class AddToBascket extends HttpServlet {
         catch (ServiceException e) {
             req.setAttribute("catalog_err", e.getMessage());
         } finally {
-            req.getRequestDispatcher("/service/mainpage").forward(req, resp);
+            req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
         }
     }
 

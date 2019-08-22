@@ -47,7 +47,7 @@ public class RemoveFromBascket extends HttpServlet {
         } catch (Exception e) {
             req.setAttribute("bskt_err", ServiceException.ERROR_INVALIDATE_DATA);
         } finally {
-            req.getRequestDispatcher("/service/mainpage").forward(req, resp);
+            req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
         }
     }
 
