@@ -8,10 +8,10 @@ import java.io.Serializable;
 @Embeddable
 public class Operations implements Serializable {
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_ORDER")
     private Order order;
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_FLOWER")
     private Flower flower;
 

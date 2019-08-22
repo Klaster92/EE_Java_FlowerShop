@@ -5,8 +5,8 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="Users" value="4dbcda50-97e9-43b3-a38a-81332d809246" />
-          <factory-entry name="entityManagerFactory" value="4dbcda50-97e9-43b3-a38a-81332d809246" />
+          <factory-entry name="Users" value="3ac6d3c8-720c-4201-8187-9d922b35e1ba" />
+          <factory-entry name="entityManagerFactory" value="3ac6d3c8-720c-4201-8187-9d922b35e1ba" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resouces/config/persistence.xml" />

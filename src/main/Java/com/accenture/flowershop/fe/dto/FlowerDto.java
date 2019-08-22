@@ -1,6 +1,8 @@
 package com.accenture.flowershop.fe.dto;
 
 import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.math.BigDecimal;
 
@@ -15,7 +17,7 @@ public class FlowerDto {
         this.price = new BigDecimal(0);
     }
 
-    //@Mapping("id")
+
     public Long getIdFlower() {
         return idFlower;
     }

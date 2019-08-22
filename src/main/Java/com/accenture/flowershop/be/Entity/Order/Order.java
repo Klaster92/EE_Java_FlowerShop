@@ -14,18 +14,20 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cust")
+    @SequenceGenerator(name = "cust", sequenceName = "ORDER_SEQ", allocationSize = 1, initialValue = 2)
     @Column(name = "id_order")
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private User user;
 
     @OneToMany(mappedBy = "order",
-            orphanRemoval = true, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+            orphanRemoval = true, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     private List<OrderPos> orderPos = new ArrayList<>();
 
+    //@Enumerated(EnumType.STRING)
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 

@@ -3,6 +3,7 @@ package com.accenture.flowershop.be.Entity.Order;
 import com.accenture.flowershop.be.Entity.Flower.Flower;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ORDERPOSITION")

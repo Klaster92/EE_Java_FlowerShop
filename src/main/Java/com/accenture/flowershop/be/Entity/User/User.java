@@ -16,8 +16,8 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "generator", sequenceName = "USER_SEQ", allocationSize = 50, initialValue = 2)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cust")
+    @SequenceGenerator(name = "cust", sequenceName = "USER_SEQ", allocationSize = 1, initialValue = 2)
     @Column(name = "ID_USER")
     @XmlElement(name = "id")
     private Long id;

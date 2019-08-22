@@ -2,6 +2,8 @@ package com.accenture.flowershop.fe.dto;
 
 import com.accenture.flowershop.fe.enums.OrderStatus;
 import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,7 +23,7 @@ public class OrderDto {
     public OrderDto() {
     }
 
-    //@Mapping("id")
+
     public Long getIdOrder() {
         return idOrder;
     }
