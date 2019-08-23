@@ -27,10 +27,23 @@ public class FlowerDAOImpl implements FlowerDAO {
         try{
             log.debug("finding flower by name");
             TypedQuery<Flower> query;
-            query = em.createQuery("select e from Flower e where e.flower_name=:flower_name", Flower.class);
+            query = em.createQuery("select e from Flower e where e.id=:id", Flower.class);
+            query.setParameter("id", id).getSingleResult();
             return query.getSingleResult();
         } catch (NoResultException e) {
          return null;
+        }
+    }
+
+    public Flower findFlowerByName(String name) {
+        try{
+            log.debug("finding flower by name");
+            TypedQuery<Flower> query;
+            query = em.createQuery("select e from Flower e where e.flower_name=:name", Flower.class);
+            query.setParameter("name", name).getSingleResult();
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
         }
     }
 

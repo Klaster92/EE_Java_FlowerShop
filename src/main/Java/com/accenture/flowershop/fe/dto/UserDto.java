@@ -20,7 +20,7 @@ public class UserDto {
     private String password;
     private String address;
     private String phoneNumber;
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.valueOf(2000);
     private Integer discount;
 
     public UserDto() {

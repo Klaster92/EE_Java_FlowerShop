@@ -11,46 +11,44 @@
 <head>
     <meta charset="UTF-8">
     <title>FlowerShop</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href=<c:url value = "main.css"/>
+<%--    <link rel="stylesheet" type="text/css" href="<c:url value="main.css"/>"/>--%>
 </head>
 <body>
 
 <div class="row">
     <h1>MAIN PAGE</h1>
     <form>
-        <div class="account">
-            <p>Name: ${Users.getName()}  </p>
-            <p>Wallet_Score: ${Users.getBalance()}</p>
-            <p>Discount: ${Users.getDiscount}% </p>
-        </div>
-    </form>
+        User: <%= request.getParameter("login")%><br>
+        Balance: <%= session.getAttribute("balance")%><br>
+        Discount: <%= session.getAttribute("discount")%><br>
+    </body>
+</form>
 
     <form action="LogoutServlet" method="get">
         <p>
         <table>
             <tr>
                 <th><small>
-                    <input type="submit" name="To login" value="Come back">
+                    <input type="submit" name="To login" value="Logout">
                 </small></th>
             </tr>
         </table>
     </form>
 </div>
 
-
+<%--/////////////////////--%>
 <div class="row">
     <form method="post" action="SearchFlower">
         <h2>CATALOG</h2>
         <h3>Filter for search</h3>
         <div class="panel">
-            <input type="text" name="from" placeholder="from"></input>
-            <input type="text" name="to" placeholder="to"></input>
-            <input type="text" name="name" placeholder="name"></input>
+            <input type="text" name="from" placeholder="from">
+            <input type="text" name="to" placeholder="to">
+            <input type="text" name="name" placeholder="name">
             <button type="submit"> Search </button>
         </div>
     </form>
-
+<%--///////////////////////////--%>
     <form method="post" action="AddToBascket">
         <div class="row catalog">
             <table>
@@ -90,12 +88,10 @@
         </div>
         <div class="panel">
             <input type="text" name="quantity" placeholder="quantity"></input>
-            <p class="err" name="err">${ctlg_err}</p>
-            <p class="msg" name="msg">${ctlg_msg}</p>
         </div>
     </form>
 </div>
-
+<%--//////////////////////--%>
 <div class="row">
     <form method="post" action="RemoveFromBascket">
         <div class="basket">
@@ -131,7 +127,7 @@
             <p>Total Price: ${BASKET.totalPrice} </p>
         </div>
     </form>
-
+<%--///////////////////////--%>
     <form method="post" action="CreateOrder">
         <div class="panel">
             <c:choose>
@@ -142,12 +138,10 @@
                     <button type="submit" id="buttoncreate"> create order </button>
                 </c:otherwise>
             </c:choose>
-            <p class="err" name="err">${bskt_err}</p>
-            <p class="msg" name="msg">${bskt_msg}</p>
         </div>
     </form>
 </div>
-
+<%--//////////////////--%>
 <div class="row">
     <h2>MY ORDERS</h2>
     <form method="post" action="PayOrder">
@@ -196,8 +190,6 @@
                     </c:otherwise>
                 </c:choose>
             </table>
-            <p class="err" name="err">${order_err}</p>
-            <p class="msg" name="msg">${order_msg}</p>
         </div>
     </form>
 </div>

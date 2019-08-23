@@ -52,11 +52,15 @@ public class MainPageServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         UserDto userDto = (UserDto) session.getAttribute(SessionAttribute.USER.toString());
-
+        session.setAttribute("balance", userDto.getBalance());
+        session.setAttribute("discount", userDto.getDiscount());
         try {
             userDto = mapper.map(userBusinessService.getUserById(userDto.getIdUser()));
 
+
             session.setAttribute(SessionAttribute.USER.toString(), userDto);
+
+
 
             if (session.getAttribute(SessionAttribute.BASKET.toString()) == null) {
                 OrderDto basket = new OrderDto();
