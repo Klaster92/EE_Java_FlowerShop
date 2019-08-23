@@ -35,11 +35,10 @@ public class LogoutServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();//false
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);//false
         LOG.info("USER " + ((UserDto) session.getAttribute(SessionAttribute.USER.toString())).getLogin() + " LOGGED OUT");
         session.invalidate();
-        req.getRequestDispatcher("/WEB-INF/lib/LoginPage.jsp").forward(req, resp);
-//        resp.sendRedirect("/LoginServlet");
     }
 }

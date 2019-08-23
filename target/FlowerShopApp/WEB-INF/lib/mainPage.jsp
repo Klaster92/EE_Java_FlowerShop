@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title>FlowerShop</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css"/>"/>
+    <link rel="stylesheet" type="text/css" href=<c:url value = "main.css"/>
 </head>
 <body>
 
@@ -20,20 +20,27 @@
     <h1>MAIN PAGE</h1>
     <form>
         <div class="account">
-            <p>Name: ${USER.login}  </p>
-            <p>Wallet_Score: ${USER.walletScore}</p>
-            <p>Discount: ${USER.discount}% </p>
+            <p>Name: ${Users.getName()}  </p>
+            <p>Wallet_Score: ${Users.getBalance()}</p>
+            <p>Discount: ${Users.getDiscount}% </p>
         </div>
     </form>
 
-    <form method = "get" action = "/LogoutServlet">
-        <button type = "submit"> Logout </button>
+    <form action="LogoutServlet" method="get">
+        <p>
+        <table>
+            <tr>
+                <th><small>
+                    <input type="submit" name="To login" value="Come back">
+                </small></th>
+            </tr>
+        </table>
     </form>
 </div>
 
 
 <div class="row">
-    <form method="post" action="/SearchFlower">
+    <form method="post" action="SearchFlower">
         <h2>CATALOG</h2>
         <h3>Filter for search</h3>
         <div class="panel">
@@ -44,7 +51,7 @@
         </div>
     </form>
 
-    <form method="post" action="/AddToBascket">
+    <form method="post" action="AddToBascket">
         <div class="row catalog">
             <table>
                 <tbody>
@@ -90,7 +97,7 @@
 </div>
 
 <div class="row">
-    <form method="post" action="/RemoveFromBascket">
+    <form method="post" action="RemoveFromBascket">
         <div class="basket">
             <h2>MY BASKET</h2>
             <table>
@@ -125,7 +132,7 @@
         </div>
     </form>
 
-    <form method="post" action="/CreateOrder">
+    <form method="post" action="CreateOrder">
         <div class="panel">
             <c:choose>
                 <c:when test="${BASKET.orderPositions.isEmpty()}">
@@ -143,7 +150,7 @@
 
 <div class="row">
     <h2>MY ORDERS</h2>
-    <form method="post" action="/PayOrder">
+    <form method="post" action="PayOrder">
         <div class="myorders">
             <table>
                 <tr>
