@@ -76,9 +76,10 @@ public class MainPageServlet extends HttpServlet {
             if (filter == null) {
                 filter = new FlowerFilter();
                 request.setAttribute(SessionAttribute.FILTER.toString(), filter);
+                flowersDto = mapper.mapFlowers(flowerBusinessService.searchFilter(filter));
+                request.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
             }
-            flowersDto = mapper.mapFlowers(flowerBusinessService.searchFilter(filter));
-            request.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
+
 
             if (userDto.getRole() == UserType.USER) {
                 request.getRequestDispatcher("/WEB-INF/lib/mainPage.jsp").forward(request, response);

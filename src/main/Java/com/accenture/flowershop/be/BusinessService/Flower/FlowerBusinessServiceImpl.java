@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NoResultException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -59,8 +62,21 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
 
     @Override
     public List<Flower> searchFilter(FlowerFilter filter) {
-        log.debug("searchFilter");
-        //return flowerDAO.searchFilter(new BigDecimal(filter.getMinPrice()), new BigDecimal(filter.getMaxPrice()), filter.getName());
-        return null;
+        if(filter.getMaxPrice()==null){
+            filter.setMaxPrice(flowerDAO.getMaxPrice());
+        }
+        if (filter.getMinPrice() == null){
+            filter.setMinPrice(flowerDAO.getMinPrice());
+        }
+        if (filter.getName()==null || filter.getName() == ""){
+            List<Flower> lazyCustomer = new LinkedList<>();
+            for(Flower flower: flowerDAO.getFlowerList()){
+                if (flower.getPrice().compareTo(filter.getMinPrice())>= 0 && flower.getPrice().compareTo(filter.getMaxPrice())<=0 ){
+                    lazyCustomer.add(flower);
+                }
+            }
+            return  lazyCustomer;
+        }
+        return flowerDAO.searchFilter(filter);
     }
 }

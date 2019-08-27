@@ -2,6 +2,8 @@ package com.accenture.flowershop.fe.Servlets;
 
 import com.accenture.flowershop.be.BusinessService.Flower.FlowerBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.FlowerFilter;
+import com.accenture.flowershop.be.BusinessService.Utils.Mapper;
+import com.accenture.flowershop.fe.dto.FlowerDto;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @WebServlet
@@ -33,11 +37,14 @@ public class SearchFlower extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String from = req.getParameter("from");
-        String to = req.getParameter("to");
+        BigDecimal from = BigDecimal.valueOf(Long.parseLong(req.getParameter("from")));
+        BigDecimal to = BigDecimal.valueOf(Long.parseLong(req.getParameter("to")));
         String name = req.getParameter("name");
-        FlowerFilter filter = new FlowerFilter();
+
+        FlowerFilter filter = new FlowerFilter(from, to, name);
+        List<FlowerDto> flowerDtos = Mapper.mapFlowers(flowerBusinessService.searchFilter(filter));
         req.setAttribute(SessionAttribute.FILTER.toString(), filter);
+        req.setAttribute(SessionAttribute.FLOWERS.toString(), flowerDtos);
         req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
     }
 }

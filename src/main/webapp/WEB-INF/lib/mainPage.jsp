@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.accenture.flowershop.fe.dto.FlowerDto" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: aleksandr.serykh
   Date: 19.08.2019
@@ -21,8 +22,7 @@
         User: <%= request.getParameter("login")%><br>
         Balance: <%= session.getAttribute("balance")%><br>
         Discount: <%= session.getAttribute("discount")%><br>
-    </body>
-</form>
+    </form>
 
     <form action="LogoutServlet" method="get">
         <p>
@@ -49,52 +49,37 @@
         </div>
     </form>
 <%--///////////////////////////--%>
-    <form method="post" action="AddToBascket">
+    <form action="AddToBascket" method="post" >
         <div class="row catalog">
-            <table>
-                <tbody>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+            <table border ="" width="500" align="left">
+                <tr bgcolor="">
+                    <th><b>Name</b></th>
+                    <th><b>Price</b></th>
+                    <th><b>Amount</b></th>
                 </tr>
-                <c:choose>
-                    <c:when  test="${FLOWERS.isEmpty()}">
-                        <tr><td colspan="3" id="empty">Nothing not found</td></tr>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach items = "${FLOWERS}" var="iterator" varStatus="rowStatus">
-                            <tr>
-                                <td>${iterator.nameFlower}</td>
-                                <td>${iterator.price}</td>
-                                <td>${iterator.quantity}</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when  test="${iterator.quantity > 0}">
-                                            <button type="submit" name="idFlower" value="${iterator.idFlower}">add to basket</button>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <button type="submit" name="idFlower" value="${iterator.idFlower}" disabled="disabled"> Get</button>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>
-
-                </tbody>
+                <%List<FlowerDto> flower = (List<FlowerDto>) request.getAttribute("FLOWERS");
+                    for(FlowerDto flowerItem: flower){ %>
+                <tr>
+                    <td><%=flowerItem.getNameFlower()%></td>
+                    <td><%=flowerItem.getPrice()%></td>
+                    <td><%=flowerItem.getNumber()%></td>
+                    <td><input type="text" name="number" placeholder="Input quantity"></input></td>
+                    <td>
+                        <button type="submit" name="idFlower" value="<%=flowerItem.getIdFlower()%>">add to basket</button>
+                    </td>
+                </tr>
+                <%}%>
             </table>
-        </div>
-        <div class="panel">
-            <input type="text" name="quantity" placeholder="quantity"></input>
         </div>
     </form>
 </div>
 <%--//////////////////////--%>
-<div class="row">
-    <form method="post" action="RemoveFromBascket">
+<div>
+    <form action="RemoveFromBascket" method="post" >
         <div class="basket">
+            <h2>SOME</h2>
+            <h2>INFO</h2>
+            <h2>ABOUT BASKET</h2>
             <h2>MY BASKET</h2>
             <table>
                 <tr>
@@ -102,10 +87,6 @@
                     <th>Quantity</th>
                     <th>Price</th>
                 </tr>
-                <c:choose>
-                    <c:when  test="${BASKET.orderPositions.isEmpty()}">
-                        <tr><td colspan="3" id="empty">Here is Empty</td></tr>
-                    </c:when>
                     <c:otherwise>
                         <c:forEach items = "${BASKET.orderPositions}" var="iterator" varStatus="rowStatus">
                             <tr>
@@ -122,7 +103,6 @@
                             </tr>
                         </c:forEach>
                     </c:otherwise>
-                </c:choose>
             </table>
             <p>Total Price: ${BASKET.totalPrice} </p>
         </div>

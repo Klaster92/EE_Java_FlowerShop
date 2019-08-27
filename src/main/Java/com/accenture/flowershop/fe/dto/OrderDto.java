@@ -87,7 +87,13 @@ public class OrderDto {
         this.dateClose = dateClose;
     }
 
-    public void computePrice(){}
+    public void computePrice(){
+        for (OrderPosDto orderP : orderPos) {
+            BigDecimal num = BigDecimal.valueOf(orderP.getNumber());
+            BigDecimal sumTemp = orderP.getPrice().multiply(num);
+            totalPrice = totalPrice.add(sumTemp);
+        }
+    }
 
 
 }

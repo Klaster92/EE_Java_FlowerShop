@@ -20,6 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 @WebServlet
@@ -43,57 +46,60 @@ public class AddToBascket extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        HttpSession session = req.getSession(false);
+        HttpSession session = request.getSession();//false
         OrderDto orderDto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
-        String idFlower = req.getParameter("idFlower");
-        String quantity = req.getParameter("quantity");
+        String idFlower = request.getParameter("idFlower");
+        String number = request.getParameter("number");
         try {
 
-            orderDto = addOrderPosition(orderDto, Long.parseLong(idFlower), Long.parseLong(quantity));
+            orderDto = addOrderPosition(orderDto, Long.parseLong(idFlower), Long.parseLong(number));
             /*Считаем общую стоимость корзины с учетом скидки*/
             orderDto.computePrice();
 
             session.setAttribute(SessionAttribute.BASKET.toString(), orderDto);
-            req.setAttribute("bascket_msg", "Item is added.");
+            //request.setAttribute("bascket_msg", "Item is added.");
 
         }catch (NumberFormatException e){
-            req.setAttribute("catalog_err", ServiceException.ERROR_INVALIDATE_DATA);
+            request.setAttribute("catalog_err", ServiceException.ERROR_INVALIDATE_DATA);
         }
         catch (ServiceException e) {
-            req.setAttribute("catalog_err", e.getMessage());
+            request.setAttribute("catalog_err", e.getMessage());
         } finally {
-            req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
+            request.getRequestDispatcher("/MainPageServlet").forward(request, response);
         }
     }
 
-    public OrderDto addOrderPosition(OrderDto orderDto, Long idFlower, Long quantity) throws ServiceException {
-        if(quantity <= 0){
+    public OrderDto addOrderPosition(OrderDto orderDto, Long idFlower, Long number) throws ServiceException {
+        if(number <= 0 || number == null){////////////////
             throw new ServiceException(ServiceException.ERROR_INVALIDATE_DATA);
         }
-        if (quantity > flowerBusinessService.getFlowerById(idFlower).getNumber()) {
+        if (number > flowerBusinessService.getFlowerById(idFlower).getNumber()) {
             throw new ServiceException(ServiceException.ERROR_FLOWERSTOCK);
         }
-        for (OrderPosDto orderPositionDto : orderDto.getOrderPositions()) {
-            /*Если позиция уже существует, то увеличиваем её параметры*/
-            if (idFlower.equals(orderPositionDto.getFlower().getIdFlower())) {
-                Long sumQty = orderPositionDto.getNumber() + quantity;
-                if (sumQty > orderPositionDto.getFlower().getNumber()) {
-                    throw new ServiceException(ServiceException.ERROR_FLOWERSTOCK);
+        if (orderDto.getOrderPositions() != null) {
+            for (OrderPosDto orderPositionDto : orderDto.getOrderPositions()) {
+                /*Если позиция уже существует, то увеличиваем её параметры*/
+                if (idFlower.equals(orderPositionDto.getFlower().getIdFlower())) {
+                    Long sumQty = orderPositionDto.getNumber() + number;
+                    if (sumQty > orderPositionDto.getFlower().getNumber()) {
+                        throw new ServiceException(ServiceException.ERROR_FLOWERSTOCK);
+                    }
+                    orderPositionDto.setOrder(orderDto);
+                    orderPositionDto.setNumber(sumQty);
+                    orderBusinessService.computePrice(orderPositionDto);
+                    return orderDto;
                 }
-                orderPositionDto.setOrder(orderDto);
-                orderPositionDto.setNumber(sumQty);
-                orderBusinessService.computePrice(orderPositionDto);
-                return orderDto;
             }
         }
         /*Если похожей позиции не было, то добавляем её*/
         OrderPosDto newOrderPositionDto = new OrderPosDto(
-                orderDto, mapper.map(flowerBusinessService.getFlowerById(idFlower)), quantity);
-        orderDto.getOrderPositions().add(newOrderPositionDto);
-
+                orderDto, mapper.map(flowerBusinessService.getFlowerById(idFlower)), number);
+        List<OrderPosDto> orderP = new ArrayList<>();
+        orderP.add(newOrderPositionDto);
+        orderDto.setOrderPositions(orderP);
+        //orderDto.getOrderPositions().add(newOrderPositionDto);
         return orderDto;
     }
 

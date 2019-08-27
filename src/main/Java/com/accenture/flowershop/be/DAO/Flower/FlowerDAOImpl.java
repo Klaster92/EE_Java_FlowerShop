@@ -7,10 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Transactional
@@ -80,11 +78,31 @@ public class FlowerDAOImpl implements FlowerDAO {
     }
 
     @Override
-    public List<Flower> searchFilter (FlowerFilter filter) {
-        log.debug("searchFilter");
-        TypedQuery<Flower> q = em.createQuery("select f from Flower f where f.price between :minprice and :maxprice and f.nameFlower like CONCAT('%',:name,'%')", Flower.class);
+    public BigDecimal getMinPrice() {
+            Query qry = em.createQuery("SELECT MIN (t.price) FROM Flower t");
+            Object obj = qry.getSingleResult();
+            if (obj == null)
+                return BigDecimal.valueOf(0);
+            return (BigDecimal) obj;
+    }
+    @Override
+    public BigDecimal getMaxPrice() {
+            Query qry = em.createQuery("SELECT MAX(t.price) FROM Flower t");
+            Object obj = qry.getSingleResult();
+            if (obj == null)
+                return BigDecimal.valueOf(0);
+            return (BigDecimal) obj;
+    }
+
+    @Override
+    public List<Flower> searchFilter(FlowerFilter filter) {
+        TypedQuery<Flower> q = em.createQuery("select f from Flower f where f.price >= minPrice and " +
+                "f.price <= maxPrice and f.NAME_FLOWER =: name ", Flower.class);
+        q.setParameter("minPrice", filter.getMinPrice());
+        q.setParameter("maxPrice", filter.getMaxPrice());
         q.setParameter("name", filter.getName());
         return q.getResultList();
-
     }
+
+
 }
