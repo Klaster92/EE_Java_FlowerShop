@@ -23,6 +23,9 @@ public class OrderDto {
 
 
     public OrderDto() {
+        orderPos = new ArrayList<>();//
+        totalPrice = new BigDecimal(0);
+        status = OrderStatus.CREATED;
     }
 
     public Long getIdOrder() {
@@ -88,12 +91,12 @@ public class OrderDto {
     }
 
     public void computePrice(){
+        BigDecimal discount = BigDecimal.valueOf(user.getDiscount()).divide(BigDecimal.valueOf(100));
         for (OrderPosDto orderP : orderPos) {
             BigDecimal num = BigDecimal.valueOf(orderP.getNumber());
-            BigDecimal sumTemp = orderP.getPrice().multiply(num);
-            totalPrice = totalPrice.add(sumTemp);
+            BigDecimal priceTemp = orderP.getPrice().multiply(num);
+            totalPrice = totalPrice.add(priceTemp);
         }
+        totalPrice = totalPrice.subtract(totalPrice.multiply(discount));
     }
-
-
 }

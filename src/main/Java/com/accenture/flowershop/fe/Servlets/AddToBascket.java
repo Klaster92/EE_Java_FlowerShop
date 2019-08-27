@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class AddToBascket extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();//false
+        HttpSession session = request.getSession(false);//false
         OrderDto orderDto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
         String idFlower = request.getParameter("idFlower");
         String number = request.getParameter("number");
@@ -59,13 +60,13 @@ public class AddToBascket extends HttpServlet {
             orderDto.computePrice();
 
             session.setAttribute(SessionAttribute.BASKET.toString(), orderDto);
-            //request.setAttribute("bascket_msg", "Item is added.");
+
 
         }catch (NumberFormatException e){
-            request.setAttribute("catalog_err", ServiceException.ERROR_INVALIDATE_DATA);
+            System.out.println("neee");
         }
         catch (ServiceException e) {
-            request.setAttribute("catalog_err", e.getMessage());
+            System.out.println("ne ne ne");
         } finally {
             request.getRequestDispatcher("/MainPageServlet").forward(request, response);
         }
@@ -96,10 +97,8 @@ public class AddToBascket extends HttpServlet {
         /*Если похожей позиции не было, то добавляем её*/
         OrderPosDto newOrderPositionDto = new OrderPosDto(
                 orderDto, mapper.map(flowerBusinessService.getFlowerById(idFlower)), number);
-        List<OrderPosDto> orderP = new ArrayList<>();
-        orderP.add(newOrderPositionDto);
-        orderDto.setOrderPositions(orderP);
-        //orderDto.getOrderPositions().add(newOrderPositionDto);
+        newOrderPositionDto.setPrice(newOrderPositionDto.getFlower().getPrice().multiply(BigDecimal.valueOf(number)));
+        orderDto.getOrderPositions().add(newOrderPositionDto);
         return orderDto;
     }
 
