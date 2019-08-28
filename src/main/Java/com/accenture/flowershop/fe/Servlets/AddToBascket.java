@@ -49,7 +49,7 @@ public class AddToBascket extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);//false
+        HttpSession session = request.getSession(false);
         OrderDto orderDto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
         String idFlower = request.getParameter("idFlower");
         String number = request.getParameter("number");
@@ -79,7 +79,7 @@ public class AddToBascket extends HttpServlet {
         if (number > flowerBusinessService.getFlowerById(idFlower).getNumber()) {
             throw new ServiceException(ServiceException.ERROR_FLOWERSTOCK);
         }
-        if (orderDto.getOrderPositions() != null) {
+        if (orderDto.getOrderPositions().size() != 0) {
             for (OrderPosDto orderPositionDto : orderDto.getOrderPositions()) {
                 /*Если позиция уже существует, то увеличиваем её параметры*/
                 if (idFlower.equals(orderPositionDto.getFlower().getIdFlower())) {

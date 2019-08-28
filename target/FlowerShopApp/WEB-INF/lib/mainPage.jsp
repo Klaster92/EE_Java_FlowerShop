@@ -53,7 +53,7 @@
                     <td><%=flowerItem.getNameFlower()%></td>
                     <td><%=flowerItem.getPrice()%></td>
                     <td><%=flowerItem.getNumber()%></td>
-                    <td><input type="text" name="quantity" placeholder="quantity"></input></td>
+                    <td><input type="text" name="number" placeholder="quantity"></input></td>
                     <td>
                         <button type="submit" name="idFlower" value="<%=flowerItem.getIdFlower()%>">add to basket</button>
                     </td>
@@ -85,10 +85,10 @@
                     if(orderPosDtos.isEmpty()){   %>
                 <tr><td colspan="3" id="empty">Here is Empty</td>
                     <%}else {%>
-                    <% for (OrderPosDto orderPosDto: orderPosDtos){%>
+                        <% for (OrderPosDto orderPosDto: orderPosDtos){%>
                     <td><%=orderPosDto.getFlower().getNameFlower()%></td>
-                    <td><%=orderPosDto.getFlower().getNumber()%></td>
-                    <td><%=orderPosDto.getFlower().getPrice()%></td>
+                    <td><%=orderPosDto.getNumber()%></td>
+                    <td><%=orderPosDto.getPrice()%></td>
                     <td><button type="submit" name="idFlower" value="<%=orderPosDto.getFlower().getIdFlower()%>">remove</button></td>
                 </tr>
                 <%}%>
@@ -98,10 +98,15 @@
     </div>
     <form action="CreateOrder" method="post">
         <%OrderDto dto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
-            if (dto.getOrderPositions().isEmpty()){%>
+            if (!dto.getOrderPositions().isEmpty()){%>
         <button type="submit" id="buttoncreate"> create order </button>
         <%}%>
     </form>
 </div>
+<%--    <form action="PayOrder" method="post">--%>
+<%--        <h2>Maybe pay order?</h2>--%>
+<%--        <td><button type="submit"  </td>--%>
+
+<%--    </form>--%>
 </body>
 </html>

@@ -43,7 +43,7 @@ public class CreateOrder extends HttpServlet {
         OrderDto orderDto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
         try {
             orderBusinessService.addOrder(mapper.map(orderDto));
-            session.removeAttribute(SessionAttribute.BASKET.toString());
+//            session.removeAttribute(SessionAttribute.BASKET.toString());
             req.setAttribute("order_msg", "Order is created");
         } catch (ServiceException e) {
             req.setAttribute("bascket_err", e.getMessage());

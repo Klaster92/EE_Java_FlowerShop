@@ -91,12 +91,13 @@ public class OrderDto {
     }
 
     public void computePrice(){
+        totalPrice = BigDecimal.valueOf(0);
         BigDecimal discount = BigDecimal.valueOf(user.getDiscount()).divide(BigDecimal.valueOf(100));
         for (OrderPosDto orderP : orderPos) {
             BigDecimal num = BigDecimal.valueOf(orderP.getNumber());
-            BigDecimal priceTemp = orderP.getPrice().multiply(num);
+            BigDecimal priceTemp = orderP.getFlower().getPrice().multiply(num);
             totalPrice = totalPrice.add(priceTemp);
         }
-        totalPrice = totalPrice.subtract(totalPrice.multiply(discount));
+        totalPrice = totalPrice.subtract(totalPrice.multiply(discount)).setScale(2, RoundingMode.HALF_UP);
     }
 }

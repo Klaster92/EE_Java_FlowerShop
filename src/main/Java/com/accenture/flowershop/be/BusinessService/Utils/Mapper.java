@@ -43,8 +43,8 @@ public class Mapper {
             orderDto.setOrderPositions(mapOrderPositionsDto(order.getOrderPos()));
             orderDto.setTotalPrice(order.getTotalPrice());
             orderDto.setStatus(order.getStatus());
-            orderDto.setDateCreate(order.getDateCreate().toString());
-            orderDto.setDateClose(order.getDateClose().toString()   );
+            orderDto.setDateCreate("today");
+            orderDto.setDateClose("not yet");
             return orderDto;
         }
         return null;
@@ -103,7 +103,7 @@ public class Mapper {
     public static Order map(OrderDto orderDto) {
         if (orderDto != null) {
             Order order = new Order();
-            order.setId(orderDto.getIdOrder());
+            //order.setId(orderDto.getIdOrder());
             order.setOrderPos(mapOrderPositions(orderDto.getOrderPositions()));
             order.setUser(map(orderDto.getUser()));
             order.setTotalPrice(orderDto.getTotalPrice());
