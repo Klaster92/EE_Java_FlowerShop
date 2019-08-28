@@ -69,7 +69,7 @@ public class MainPageServlet extends HttpServlet {
             }
 
             List<OrderDto> ordersDto = mapper.mapOrders(orderBusinessService.getAllOrders(mapper.map(userDto)));
-            request.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
+            session.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
 
             FlowerFilter filter = (FlowerFilter) request.getAttribute(SessionAttribute.FILTER.toString());
             List<FlowerDto> flowersDto;

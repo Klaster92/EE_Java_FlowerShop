@@ -2,7 +2,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.accenture.flowershop.fe.enums.SessionAttribute" %>
 <%@ page import="com.accenture.flowershop.fe.dto.OrderDto" %>
-<%@ page import="com.accenture.flowershop.fe.dto.OrderPosDto" %><%--
+<%@ page import="com.accenture.flowershop.fe.dto.OrderPosDto" %>
+<%@ page import="org.springframework.data.domain.jaxb.SpringDataJaxb" %>
+<%@ page import="com.accenture.flowershop.be.Entity.Order.Order" %>
+<%@ page import="com.accenture.flowershop.fe.enums.OrderStatus" %><%--
   Created by IntelliJ IDEA.
   User: aleksandr.serykh
   Date: 19.08.2019
@@ -102,11 +105,37 @@
         <button type="submit" id="buttoncreate"> create order </button>
         <%}%>
     </form>
-</div>
-<%--    <form action="PayOrder" method="post">--%>
-<%--        <h2>Maybe pay order?</h2>--%>
-<%--        <td><button type="submit"  </td>--%>
+    <br>
+    <br>
+    <br>
+    <div>
+        <form action="PayOrder" method="post">
 
-<%--    </form>--%>
+            <% List<OrderDto> created = (List<OrderDto>) session.getAttribute(SessionAttribute.ORDERS.toString());
+                if (created != null){%>
+            <%for (OrderDto toPay: created){
+                if (toPay.getStatus()!= OrderStatus.PAID){%>
+            <table border ="" width="700" align="left">
+                <tr>
+                    <th>id</th>
+                    <th>Flower and Quantity</th>
+                    <th>Price</th>
+                </tr>
+                <th> <%=toPay.getIdOrder() %></th>
+                    <%for (OrderPosDto pos: toPay.getOrderPositions()){%>
+                <th> <%=pos.getFlower().getNameFlower()%>
+                    <p> </p>
+                    <%=pos.getNumber()%>
+                </th>
+                    <%}%>
+                <th> <%=toPay.getTotalPrice()%></th>
+                <th><button type="submit" name="idOrder" value="<%=toPay.getIdOrder()%>"> to pay </button></th>
+                    <%}%>
+                    <%}%>
+                    <%}%>
+        </form>
+    </div>
+
+</div>
 </body>
 </html>

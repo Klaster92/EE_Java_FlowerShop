@@ -121,6 +121,10 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
         }
     }
 
+    public List<Order> getAllMyOrders(Long userId) {
+        return getAllMyOrders(userId);
+    }
+
     @Override
     public void computePrice(OrderPosDto order){
         log.debug("computeOrder");

@@ -9,7 +9,6 @@ import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.dto.UserDto;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.Mapping;
 
 import java.util.ArrayList;
 import java.util.List;

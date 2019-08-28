@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.accenture.flowershop.be.Entity.Order.Order" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.accenture.flowershop.fe.dto.OrderDto" %><%--
   Created by IntelliJ IDEA.
   User: aleksandr.serykh
   Date: 19.08.2019
@@ -11,21 +13,20 @@
 <head>
     <meta charset="UTF-8">
     <title>FlowerShop</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css"/>"/>
 </head>
 <body>
 <form>
     <h1> ADMIN MAIN PAGE</h1>
-    <p>Name: ${USER.login}  </p>
-    <p>Role: ${USER.role} </p>
+    <p>Hello, <%= request.getParameter("login")%>!<br></p>
+    <p>Role: ADMIN<br></p>
 </form>
 
-<form method = "get" action = "/LogoutServlet">
+<form method = "get" action = "LogoutServlet">
     <button type = "submit"> Logout </button>
 </form>
 
 <h2>ALL ORDERS</h2>
-<form method="post" action="/CloseOrderServlet">
+<form method="post" action="CloseOrderServlet">
     <div>
         <table>
             <tr>
@@ -37,6 +38,9 @@
                 <td>Date Create</td>
                 <td>Date Close</td>
             </tr>
+            <%
+                List<OrderDto> orderList = (List<OrderDto>) session.getAttribute(se)
+
             <c:forEach items = "${ORDERS}" var="iterator" varStatus="rowStatus">
                 <tr>
                     <td>${iterator.idOrder}</td>

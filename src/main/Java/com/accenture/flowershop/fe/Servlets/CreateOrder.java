@@ -4,6 +4,8 @@ import com.accenture.flowershop.be.BusinessService.Order.OrderBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.Mapper;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
 import com.accenture.flowershop.fe.dto.OrderDto;
+import com.accenture.flowershop.fe.dto.UserDto;
+import com.accenture.flowershop.fe.enums.OrderStatus;
 import com.accenture.flowershop.fe.enums.SessionAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @WebServlet
@@ -37,18 +41,21 @@ public class CreateOrder extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = req.getSession(false);
-        OrderDto orderDto = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
-        try {
-            orderBusinessService.addOrder(mapper.map(orderDto));
-//            session.removeAttribute(SessionAttribute.BASKET.toString());
-            req.setAttribute("order_msg", "Order is created");
-        } catch (ServiceException e) {
-            req.setAttribute("bascket_err", e.getMessage());
-        } finally {
-            req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
+        HttpSession session = request.getSession(false);
+        OrderDto orderDTO = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
+        orderBusinessService.saveOrder(Mapper.map(orderDTO));
+        UserDto userDTO = (UserDto) session.getAttribute(SessionAttribute.USER.toString());
+        List<OrderDto> dtoList = (List<OrderDto>) session.getAttribute(SessionAttribute.ORDERS.toString());
+        List<OrderDto> dtoForSession = new ArrayList<>();
+        for (OrderDto dto : dtoList) {
+            if (!dto.getStatus().equals(OrderStatus.PAID)) {
+                dtoForSession.add(dto);
+            }
         }
+        session.setAttribute(SessionAttribute.ORDERS.toString(), dtoForSession);
+        request.setAttribute("order_msg", "Order is created");
+        request.getRequestDispatcher("/MainPage").forward(request, response);
     }
 }
