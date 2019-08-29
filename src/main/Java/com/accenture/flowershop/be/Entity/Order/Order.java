@@ -6,6 +6,7 @@ import com.accenture.flowershop.fe.enums.OrderStatus;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,14 +37,14 @@ public class Order {
     private OrderStatus status;
 
     @Column(name = "date_create")
-    private LocalDate dateCreate;
+    private LocalDateTime dateCreate;
 
     @Column(name = "date_close")
-    private LocalDate dateClose;
+    private LocalDateTime dateClose;
 
     public Order() {
         this.totalPrice = new BigDecimal(0);
-        this.dateCreate = LocalDate.now();
+        this.dateCreate = LocalDateTime.now();
         this.status = OrderStatus.CREATED;
     }
 
@@ -95,16 +96,16 @@ public class Order {
         orderPos.setOrder(this);
     }
 
-    public LocalDate getDateCreate() {
+    public LocalDateTime getDateCreate() {
         return dateCreate;
     }
 
-    public LocalDate getDateClose() {
+    public LocalDateTime getDateClose() {
         return dateClose;
     }
 
     public void close() {
-        this.status = OrderStatus.COMPLETED;
-        this.dateClose = LocalDate.now();
+        this.status = OrderStatus.CLOSED;
+        this.dateClose = LocalDateTime.now();
     }
 }

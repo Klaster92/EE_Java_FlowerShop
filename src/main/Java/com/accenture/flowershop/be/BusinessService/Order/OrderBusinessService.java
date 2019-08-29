@@ -12,7 +12,11 @@ public interface OrderBusinessService  {
 
     Order saveOrder(Order order);
 
+    List<Order> getListOrders();
+
     List<Order> getAllOrders(User user);
+
+    void updateOrder(Order order);
 
     void completeOrder(Long id);
 

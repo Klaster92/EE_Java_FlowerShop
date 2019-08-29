@@ -2,6 +2,7 @@ package com.accenture.flowershop.be.BusinessService.Order;
 
 import com.accenture.flowershop.be.BusinessService.User.UserBusinessService;
 import com.accenture.flowershop.be.BusinessService.Utils.ServiceException;
+import com.accenture.flowershop.be.DAO.Flower.FlowerDAO;
 import com.accenture.flowershop.be.DAO.Order.OrderDAO;
 import com.accenture.flowershop.be.Entity.Flower.Flower;
 import com.accenture.flowershop.be.Entity.Order.Order;
@@ -32,6 +33,9 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     @Autowired
     private UserBusinessService userBusinessService;
 
+    @Autowired
+    private FlowerDAO flowerDAO;
+
     @Override
     public Order saveOrder(Order order) {
         log.debug("saveOrder");
@@ -51,6 +55,11 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     } // дописать, не факт, что понадобится
 
     @Override
+    public List<Order> getListOrders() {
+        return orderDAO.findAllOrders();
+    }
+
+    @Override
     public List<Order> getAllOrders(User user) {
         log.debug("getAllOrders");
         if(user.getRole() == UserType.USER) {
@@ -60,10 +69,15 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
     }
 
     @Override
+    public void updateOrder(Order order) {
+        orderDAO.updateOrder(order);
+    }
+
+    @Override
     public void completeOrder(Long id) {
         log.debug("completeOrder");
         Order order = orderDAO.findOrder(id);
-        order.setStatus(OrderStatus.COMPLETED);
+        order.setStatus(OrderStatus.CLOSED);
         orderDAO.updateOrder(order);
     }
 
@@ -100,14 +114,15 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
 
             userBusinessService.pay(idUser, order.getTotalPrice());//**вычет стоимости покупки
             order.setStatus(OrderStatus.PAID);
-            for (OrderPos orderPosition : order.getOrderPos()) {   //**изменение кол-ва цветов на складе
+            orderDAO.updateOrder(order);
+            for (OrderPos orderPosition : order.getOrderPos()) {
                 Flower flower = orderPosition.getFlower();
                 if (flower.getNumber() < orderPosition.getNumber()) {
                     throw new ServiceException(ServiceException.ERROR_FLOWERSTOCK);
                 }
                 flower.setNumber(flower.getNumber() - orderPosition.getNumber());
+                flowerDAO.updateFlower(flower);
             }
-            orderDAO.updateOrder(order);
     }
 
     @Override
@@ -116,6 +131,7 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
         log.debug("closeOrder");
         try{
             Order order = orderDAO.findOrder(idOrder);
+            order.close();
         }catch (NoResultException e) {
             throw new ServiceException(ServiceException.ERROR_FIND_ORDER);
         }

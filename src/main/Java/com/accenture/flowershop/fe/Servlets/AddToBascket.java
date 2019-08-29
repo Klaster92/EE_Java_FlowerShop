@@ -73,7 +73,7 @@ public class AddToBascket extends HttpServlet {
     }
 
     public OrderDto addOrderPosition(OrderDto orderDto, Long idFlower, Long number) throws ServiceException {
-        if(number <= 0 || number == null){////////////////
+        if(number <= 0){////////////////
             throw new ServiceException(ServiceException.ERROR_INVALIDATE_DATA);
         }
         if (number > flowerBusinessService.getFlowerById(idFlower).getNumber()) {
@@ -89,15 +89,15 @@ public class AddToBascket extends HttpServlet {
                     }
                     orderPositionDto.setOrder(orderDto);
                     orderPositionDto.setNumber(sumQty);
-                    orderBusinessService.computePrice(orderPositionDto);
+                    orderPositionDto.computePrice();
                     return orderDto;
                 }
             }
         }
         /*Если похожей позиции не было, то добавляем её*/
         OrderPosDto newOrderPositionDto = new OrderPosDto(
-                orderDto, mapper.map(flowerBusinessService.getFlowerById(idFlower)), number);
-        newOrderPositionDto.setPrice(newOrderPositionDto.getFlower().getPrice().multiply(BigDecimal.valueOf(number)));
+                orderDto, Mapper.map(flowerBusinessService.getFlowerById(idFlower)), number);
+        newOrderPositionDto.setPrice(newOrderPositionDto.getFlower().getPrice());
         orderDto.getOrderPositions().add(newOrderPositionDto);
         return orderDto;
     }

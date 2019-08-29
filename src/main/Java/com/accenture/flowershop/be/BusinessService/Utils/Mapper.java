@@ -8,6 +8,7 @@ import com.accenture.flowershop.fe.dto.FlowerDto;
 import com.accenture.flowershop.fe.dto.OrderDto;
 import com.accenture.flowershop.fe.dto.OrderPosDto;
 import com.accenture.flowershop.fe.dto.UserDto;
+import com.accenture.flowershop.fe.enums.OrderStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -42,8 +43,10 @@ public class Mapper {
             orderDto.setOrderPositions(mapOrderPositionsDto(order.getOrderPos()));
             orderDto.setTotalPrice(order.getTotalPrice());
             orderDto.setStatus(order.getStatus());
-            orderDto.setDateCreate("today");
-            orderDto.setDateClose("not yet");
+            if (order.getStatus() == OrderStatus.CLOSED) {
+                orderDto.setDateClose(order.getDateClose().toString());
+            }
+            orderDto.setDateCreate(order.getDateCreate().toString());
             return orderDto;
         }
         return null;

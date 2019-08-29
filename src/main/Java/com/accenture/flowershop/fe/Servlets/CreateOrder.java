@@ -45,8 +45,11 @@ public class CreateOrder extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         OrderDto orderDTO = (OrderDto) session.getAttribute(SessionAttribute.BASKET.toString());
+
         orderBusinessService.saveOrder(Mapper.map(orderDTO));
-        UserDto userDTO = (UserDto) session.getAttribute(SessionAttribute.USER.toString());
+
+        //UserDto userDTO = (UserDto) session.getAttribute(SessionAttribute.USER.toString());
+
         List<OrderDto> dtoList = (List<OrderDto>) session.getAttribute(SessionAttribute.ORDERS.toString());
         List<OrderDto> dtoForSession = new ArrayList<>();
         for (OrderDto dto : dtoList) {
@@ -55,7 +58,6 @@ public class CreateOrder extends HttpServlet {
             }
         }
         session.setAttribute(SessionAttribute.ORDERS.toString(), dtoForSession);
-        request.setAttribute("order_msg", "Order is created");
-        request.getRequestDispatcher("/MainPage").forward(request, response);
+        request.getRequestDispatcher("/MainPageServlet").forward(request, response);
     }
 }

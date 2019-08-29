@@ -5,7 +5,8 @@
 <%@ page import="com.accenture.flowershop.fe.dto.OrderPosDto" %>
 <%@ page import="org.springframework.data.domain.jaxb.SpringDataJaxb" %>
 <%@ page import="com.accenture.flowershop.be.Entity.Order.Order" %>
-<%@ page import="com.accenture.flowershop.fe.enums.OrderStatus" %><%--
+<%@ page import="com.accenture.flowershop.fe.enums.OrderStatus" %>
+<%@ page import="java.math.BigDecimal" %><%--
   Created by IntelliJ IDEA.
   User: aleksandr.serykh
   Date: 19.08.2019
@@ -56,7 +57,7 @@
                     <td><%=flowerItem.getNameFlower()%></td>
                     <td><%=flowerItem.getPrice()%></td>
                     <td><%=flowerItem.getNumber()%></td>
-                    <td><input type="text" name="number" placeholder="quantity"></input></td>
+                    <td><input type="text" name="number" placeholder="number"></input></td>
                     <td>
                         <button type="submit" name="idFlower" value="<%=flowerItem.getIdFlower()%>">add to basket</button>
                     </td>
@@ -91,7 +92,7 @@
                         <% for (OrderPosDto orderPosDto: orderPosDtos){%>
                     <td><%=orderPosDto.getFlower().getNameFlower()%></td>
                     <td><%=orderPosDto.getNumber()%></td>
-                    <td><%=orderPosDto.getPrice()%></td>
+                    <td><%=orderPosDto.getPrice().multiply(BigDecimal.valueOf(orderPosDto.getNumber()))%></td>
                     <td><button type="submit" name="idFlower" value="<%=orderPosDto.getFlower().getIdFlower()%>">remove</button></td>
                 </tr>
                 <%}%>
@@ -112,9 +113,9 @@
         <form action="PayOrder" method="post">
 
             <% List<OrderDto> created = (List<OrderDto>) session.getAttribute(SessionAttribute.ORDERS.toString());
-                if (created != null){%>
+                if (!created.isEmpty()){%>
             <%for (OrderDto toPay: created){
-                if (toPay.getStatus()!= OrderStatus.PAID){%>
+                if (toPay.getStatus().equals(OrderStatus.CREATED)){%>
             <table border ="" width="700" align="left">
                 <tr>
                     <th>id</th>

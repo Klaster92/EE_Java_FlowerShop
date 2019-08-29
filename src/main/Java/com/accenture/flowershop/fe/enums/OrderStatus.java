@@ -3,16 +3,16 @@ package com.accenture.flowershop.fe.enums;
 public enum OrderStatus {
     CREATED,
     PAID,
-    COMPLETED;
+    CLOSED;
 
     public OrderStatus next() {
         switch (this) {
             case CREATED:
                 return PAID;
             case PAID:
-                return COMPLETED;
-            case COMPLETED:
-                return COMPLETED;
+                return CLOSED;
+            case CLOSED:
+                return CLOSED;
         }
         return this;
     }

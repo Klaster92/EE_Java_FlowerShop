@@ -1,11 +1,6 @@
 package com.accenture.flowershop.fe.dto;
 
 import com.accenture.flowershop.fe.enums.OrderStatus;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;

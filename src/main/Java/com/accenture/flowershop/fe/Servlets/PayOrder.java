@@ -45,9 +45,9 @@ public class PayOrder extends HttpServlet {
 
         try {
             orderBusinessService.payOrder(Long.parseLong(idOrder), userDto.getIdUser());
-            req.setAttribute("order_msg", "Order is paid");
+            //req.setAttribute("order_msg", "Order is paid");
         } catch (ServiceException e) {
-            req.setAttribute("order_err", e.getMessage());
+            //req.setAttribute("order_err", e.getMessage());
         }
         req.getRequestDispatcher("/MainPageServlet").forward(req, resp);
     }

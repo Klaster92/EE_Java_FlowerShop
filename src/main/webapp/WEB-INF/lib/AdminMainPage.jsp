@@ -1,6 +1,10 @@
 <%@ page import="com.accenture.flowershop.be.Entity.Order.Order" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.accenture.flowershop.fe.dto.OrderDto" %><%--
+<%@ page import="com.accenture.flowershop.fe.dto.OrderDto" %>
+<%@ page import="com.accenture.flowershop.fe.enums.SessionAttribute" %>
+<%@ page import="com.accenture.flowershop.fe.enums.OrderStatus" %>
+<%@ page import="java.util.Comparator" %>
+<%@ page import="com.accenture.flowershop.fe.dto.OrderPosDto" %><%--
   Created by IntelliJ IDEA.
   User: aleksandr.serykh
   Date: 19.08.2019
@@ -15,67 +19,93 @@
     <title>FlowerShop</title>
 </head>
 <body>
-<form>
-    <h1> ADMIN MAIN PAGE</h1>
-    <p>Hello, <%= request.getParameter("login")%>!<br></p>
-    <p>Role: ADMIN<br></p>
-</form>
+<div class="row">
+    <h1>Admin page</h1>
+    <div>Hello,<%=session.getAttribute("login") %>!
+        Your balance:<%=session.getAttribute("balance")%>
+        and discount:<%=session.getAttribute("discount")%></div>
+</div>
 
-<form method = "get" action = "LogoutServlet">
+<form action = "LogoutServlet" method = "get" >
+
     <button type = "submit"> Logout </button>
 </form>
-
-<h2>ALL ORDERS</h2>
-<form method="post" action="CloseOrderServlet">
+<form action="CloseOrderServlet" method="post">
     <div>
-        <table>
+        <table border ="" width="900" align="left">
             <tr>
-                <td>Id Order</td>
-                <td>Id User</td>
-                <td>Description</td>
-                <td>Total Price</td>
+                <td>Order id</td>
+                <td>User id</td>
+                <td>Flowers and amount</td>
+                <td>Price</td>
                 <td>Status</td>
                 <td>Date Create</td>
                 <td>Date Close</td>
+                <td>Action</td>
             </tr>
-            <%
-                List<OrderDto> orderList = (List<OrderDto>) session.getAttribute(se)
+            <% List<OrderDto> orderDto = (List<OrderDto>) session.getAttribute(SessionAttribute.ORDERS.toString());
+                orderDto.sort(Comparator.comparing(OrderDto::getIdOrder));
+                for (OrderDto dto: orderDto){
+                    if (dto.getStatus() == OrderStatus.CREATED){
+            %>
+            <tr>
+                <td><%=dto.getIdOrder()%></td>
+                <td><%=dto.getUser().getIdUser()%></td>
 
-            <c:forEach items = "${ORDERS}" var="iterator" varStatus="rowStatus">
-                <tr>
-                    <td>${iterator.idOrder}</td>
-                    <td>${iterator.user.idUser}</td>
-                    <td>
-                        <c:forEach items = "${iterator.orderPositions}" var="it" varStatus="rowStatus">
-                            <p>${it.quantity}x ${it.flower.nameFlower}</p>
-                        </c:forEach>
-                    </td>
-                    <td>${iterator.totalPrice}</td>
-                    <td>${iterator.status}</td>
-                    <td>${iterator.dateCreate}</td>
-                    <td>${iterator.dateClose}</td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${iterator.status.toString() eq 'PAID'}">
-                                <button type="submit"
-                                        name="idOrder"
-                                        value="${iterator.idOrder}"
-                                > Close </button>
-                            </c:when>
-                            <c:otherwise>
-                                <button type="submit"
-                                        name="idOrder"
-                                        value="${iterator.idOrder}"
-                                        disabled="disabled"
-                                > Close </button>
-                            </c:otherwise>
-                        </c:choose>
-                    </td>
-                </tr>
-            </c:forEach>
+                <td><%for (OrderPosDto positionDTO: dto.getOrderPositions()){%>
+                    <%=positionDTO.getFlower().getNameFlower() %>:
+                    <%=positionDTO.getNumber()%>; <%}%></td>
+
+                <td><%=dto.getTotalPrice()%></td>
+                <td><%=dto.getStatus()%></td>
+                <td><%=dto.getDateCreate()%></td>
+                <td><%=dto.getDateClose()%></td>
+                <td><button type="submit" name="idOrder" value="<%=dto.getIdOrder()%>"
+                > Close </button></td>
+            </tr>
+            <%}%>
+            <%}%>
+            <% for (OrderDto dto: orderDto){
+                if (dto.getStatus() == OrderStatus.PAID){
+            %>
+            <tr>
+                <td><%=dto.getIdOrder()%></td>
+                <td><%=dto.getUser().getIdUser()%></td>
+
+                <td><%for (OrderPosDto positionDto: dto.getOrderPositions()){%>
+                    <%=positionDto.getFlower().getNameFlower() %>:
+                    <%=positionDto.getNumber()%>; <%}%></td>
+
+                <td><%=dto.getTotalPrice()%></td>
+                <td><%=dto.getStatus()%></td>
+                <td><%=dto.getDateCreate()%></td>
+                <td><%=dto.getDateClose()%></td>
+                <td><button type="submit" name="idOrder" value="<%=dto.getIdOrder()%>"
+                > Close </button></td>
+            </tr>
+            <%}%>
+            <%}%>
+            <% for (OrderDto dto: orderDto){
+                if (dto.getStatus() == OrderStatus.CLOSED){
+            %>
+            <tr>
+                <td><%=dto.getIdOrder()%></td>
+                <td><%=dto.getUser().getIdUser()%></td>
+
+                <td><%for (OrderPosDto positionDTO: dto.getOrderPositions()){%>
+                    <%=positionDTO.getFlower().getNameFlower() %>:
+                    <%=positionDTO.getNumber()%>;<%}%></td>
+
+
+                <td><%=dto.getTotalPrice()%></td>
+                <td><%=dto.getStatus()%></td>
+                <td><%=dto.getDateCreate()%></td>
+                <td><%=dto.getDateClose()%></td>
+            </tr>
+            <%}%>
+            <%}%>
         </table>
     </div>
 </form>
-
 </body>
 </html>

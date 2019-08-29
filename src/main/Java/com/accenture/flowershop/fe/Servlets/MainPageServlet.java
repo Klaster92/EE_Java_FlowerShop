@@ -68,8 +68,7 @@ public class MainPageServlet extends HttpServlet {
                 session.setAttribute(SessionAttribute.BASKET.toString(), basket);
             }
 
-            List<OrderDto> ordersDto = mapper.mapOrders(orderBusinessService.getAllOrders(mapper.map(userDto)));
-            session.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
+
 
             FlowerFilter filter = (FlowerFilter) request.getAttribute(SessionAttribute.FILTER.toString());
             List<FlowerDto> flowersDto;
@@ -80,10 +79,13 @@ public class MainPageServlet extends HttpServlet {
                 request.setAttribute(SessionAttribute.FLOWERS.toString(), flowersDto);
             }
 
-
             if (userDto.getRole() == UserType.USER) {
+                List<OrderDto> ordersDto = mapper.mapOrders(orderBusinessService.getAllOrders(mapper.map(userDto)));
+                session.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
                 request.getRequestDispatcher("/WEB-INF/lib/mainPage.jsp").forward(request, response);
-            } else {
+            } else if (userDto.getRole() == UserType.ADMIN){
+                List<OrderDto> ordersDto = mapper.mapOrders(orderBusinessService.getListOrders());
+                session.setAttribute(SessionAttribute.ORDERS.toString(), ordersDto);
                 request.getRequestDispatcher("/WEB-INF/lib/AdminMainPage.jsp").forward(request, response);
             }
         } catch (ServiceException e) {

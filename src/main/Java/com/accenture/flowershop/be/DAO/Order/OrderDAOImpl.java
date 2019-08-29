@@ -38,7 +38,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public Order updateOrder(Order order) {
             log.debug("update order");
-            em.refresh(order);
+            em.merge(order);
             em.flush();
             return order;
     }
